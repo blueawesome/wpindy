@@ -1,6 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "wpindy",
-  "pages_build_output_dir": "./dist",
-  "compatibility_date": "2026-05-21"
+  "compatibility_date": "2026-05-21",
+  "assets": {
+    "directory": "./dist"
+  }
 }

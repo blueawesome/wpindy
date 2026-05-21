@@ -1,15 +1,32 @@
-# Cloudflare Pages Deployment
+# Cloudflare Deployment
 
-This Astro site is configured for Cloudflare Pages direct uploads with Wrangler.
+This Astro site is configured for the Cloudflare Git-connected Workers build flow shown in the dashboard.
 
-## Cloudflare Pages Settings
+The Cloudflare project is a Worker named `wpindy` that serves static assets from Astro's `dist` output.
+
+## Cloudflare Build Settings
 
 - Build command: `npm run build`
-- Build output directory: `dist`
+- Deploy command: `npx wrangler deploy`
+- Version command: `npx wrangler versions upload`
+- Root directory: `/`
 - Node version: `22.16.0`
-- Project name in Wrangler config/scripts: `wpindy`
 
-Cloudflare Pages supports setting Node with `.node-version` or `.nvmrc`; both are included.
+Cloudflare detects Node from `.node-version` / `.nvmrc`.
+
+## Wrangler Config
+
+`wrangler.jsonc` points Cloudflare Workers static assets at the Astro build output:
+
+```jsonc
+{
+  "name": "wpindy",
+  "compatibility_date": "2026-05-21",
+  "assets": {
+    "directory": "./dist"
+  }
+}
+```
 
 ## Local Commands
 
@@ -18,7 +35,7 @@ npm run build
 npm run cf:preview
 ```
 
-`cf:preview` builds the site and serves `dist` through `wrangler pages dev`.
+`cf:preview` builds the site and serves it through `wrangler dev`.
 
 ## Deploy Commands
 
@@ -26,13 +43,11 @@ npm run cf:preview
 npm run cf:deploy
 ```
 
-Preview/direct-upload deployment:
+For Cloudflare's version workflow:
 
 ```sh
-npm run cf:deploy:preview
+npm run cf:versions:upload
 ```
-
-These commands assume the Cloudflare Pages project is named `wpindy`. If the project name in Cloudflare is different, update `wrangler.jsonc` and the `cf:*` scripts in `package.json`.
 
 ## Authentication
 
@@ -42,11 +57,6 @@ For local deploys, run:
 npx wrangler login
 ```
 
-For CI deploys, use Cloudflare environment variables/secrets instead of committing credentials:
-
-```txt
-CLOUDFLARE_ACCOUNT_ID
-CLOUDFLARE_API_TOKEN
-```
+For Cloudflare-hosted builds, use the API token configured in the project settings.
 
 Do not commit API tokens or account secrets.

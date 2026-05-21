@@ -9,9 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "cf:preview": "npm run build && wrangler pages dev dist",
-    "cf:deploy": "npm run build && wrangler pages deploy dist --project-name wpindy",
-    "cf:deploy:preview": "npm run build && wrangler pages deploy dist --project-name wpindy --branch preview",
+    "cf:preview": "npm run build && wrangler dev",
+    "cf:deploy": "npm run build && wrangler deploy",
+    "cf:versions:upload": "npm run build && wrangler versions upload",
     "astro": "astro"
   },
   "dependencies": {

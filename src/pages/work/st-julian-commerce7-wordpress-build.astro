@@ -1,0 +1,8 @@
+---
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
+import { work } from '../../data/work';
+
+const item = work.find((w: any) => w.slug === 'st-julian-commerce7-wordpress-build');
+---
+
+<CaseStudyLayout item={item} />

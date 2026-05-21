@@ -1,0 +1,71 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EditorialImageSlot from '../components/EditorialImageSlot.astro';
+import StripeDivider from '../components/StripeDivider.astro';
+---
+
+<Layout
+  title="About | WP Indy"
+  description="About Tommy Day and WP Indy, an Indianapolis-based senior WordPress development studio focused on custom plugins, integrations, ecommerce, and rescue work."
+>
+
+  <!-- Dark hero (matches home hero treatment) -->
+  <section class="bg-[#0b0f15] text-white">
+    <div class="shell py-16">
+      <p class="eyebrow text-white/60">About</p>
+      <div class="mt-3 lg:flex lg:items-start lg:gap-8">
+        <div class="lg:flex-1">
+          <h1 class="font-display text-[2.6rem] leading-[1.02] tracking-[-0.02em] text-white sm:text-[3.2rem] md:text-[3.8rem] lg:text-[4rem]">Senior WordPress development with a practical, technical focus.</h1>
+          <p class="mt-5 max-w-3xl text-lg text-white/78">I build custom WordPress plugins, integrations, and ecommerce solutions. I help agencies and teams solve the parts of their projects that need deep technical judgment and sustainable implementation.</p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="/contact/" class="btn-pill btn-pill--white">Start a Project</a>
+            <a href="/work/" class="text-base font-medium text-white/75 transition hover:text-white">View Work</a>
+          </div>
+        </div>
+
+        <div class="mt-6 lg:mt-0 lg:w-64">
+          <div class="rounded-lg bg-white/6 p-4 text-sm">
+            <div class="font-semibold">Core focus</div>
+            <div class="mt-3">
+              <span class="cred-pill">Custom plugins</span>
+              <span class="cred-pill">API integrations</span>
+              <span class="cred-pill">WooCommerce & Commerce7</span>
+              <span class="cred-pill">Agency support</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- three-color stripe divider -->
+  <StripeDivider />
+
+  <!-- Beige content section -->
+  <section class="bg-[#e7dfd2] text-neutral-900">
+    <div class="shell py-16">
+      <div class="max-w-6xl">
+        <div class="mt-2 grid gap-8 lg:grid-cols-3 lg:items-start">
+          <div class="lg:col-span-2">
+            <h2 class="font-display text-3xl">About Tommy</h2>
+            <p class="mt-4 text-neutral-800">Tommy is a senior WordPress developer with 15+ years of experience building custom functionality, integrations, and ecommerce solutions. Based in Indianapolis, he works with agencies, teams, and merchants who need sustainable, high-quality technical work.</p>
+
+            <div class="mt-6 space-y-4 text-neutral-800">
+              <p>Outside of development, I make analog collage and visual work—small series made from vintage computing and technical ephemera. That background shows up here mostly as a bias toward sites that feel custom, intentional, and a little more human than a default agency template. See more at <a href="https://tommyday.com" class="underline">tommyday.com</a>.</p>
+
+              <p>Local? I’m based in Indianapolis — learn more about Indianapolis WordPress development at <a href="/indianapolis-wordpress-development/" class="underline">Indianapolis WordPress Development</a>.</p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-1">
+            <div class="ml-auto w-56">
+              <EditorialImageSlot label="Author collage placeholder" variant="square" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</Layout>

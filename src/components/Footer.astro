@@ -1,0 +1,61 @@
+---
+import StripeDivider from './StripeDivider.astro';
+---
+
+<footer class="bg-[#0b0f15] text-white">
+  <!-- optional stripe at the top of the footer -->
+  <StripeDivider />
+
+  <div class="shell py-12">
+    <div class="grid gap-8 md:grid-cols-4 md:items-start">
+      <div class="md:col-span-2">
+        <a href="/" class="inline-flex items-center">
+          <img src="/wp_indy2.svg" alt="WP Indy" class="h-9 w-auto" />
+        </a>
+        <p class="mt-4 text-neutral-300 max-w-xl">Senior WordPress development for custom plugins, API integrations, ecommerce logic, and technical rescue work.</p>
+
+        <p class="mt-4 text-sm text-neutral-500">Based in Indianapolis, working with agencies and teams anywhere.</p>
+        <p class="mt-2 text-sm text-neutral-400">Email: <a href="mailto:tommy@wpindy.com" class="underline text-neutral-300">tommy@wpindy.com</a></p>
+
+        <div class="mt-4">
+          <a href="/contact/" class="btn-pill btn-pill--blue">Start a Project</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-neutral-300">Services</h4>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-400">
+          <li><a href="/services/custom-wordpress-plugin-development/" class="hover:text-white">Custom WordPress Plugins</a></li>
+          <li><a href="/services/wordpress-api-integrations/" class="hover:text-white">API Integrations</a></li>
+          <li><a href="/services/woocommerce-customization/" class="hover:text-white">WooCommerce Customization</a></li>
+          <li><a href="/services/commerce7-wordpress-integration/" class="hover:text-white">Commerce7 + WordPress</a></li>
+          <li><a href="/services/debugging-refactoring-rescue-work/" class="hover:text-white">Debugging &amp; Rescue Work</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-sm font-semibold text-neutral-300">Site</h4>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-400">
+          <li><a href="/work/" class="hover:text-white">Work</a></li>
+          <li><a href="/for-agencies/" class="hover:text-white">For Agencies</a></li>
+          <li><a href="/contract-wordpress-developer/" class="hover:text-white">Contract Developer</a></li>
+          <li><a href="/about/" class="hover:text-white">About</a></li>
+          <li><a href="/contact/" class="hover:text-white">Contact</a></li>
+        </ul>
+
+        <h4 class="mt-6 text-sm font-semibold text-neutral-300">Local</h4>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-400">
+          <li><a href="/indianapolis-wordpress-development/" class="hover:text-white">Indianapolis WordPress Development</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="border-t border-black/10">
+    <div class="shell py-4 flex flex-col items-center justify-between gap-4 md:flex-row">
+      <div class="text-sm text-neutral-500">© 2026 WP Indy</div>
+      <div class="text-sm text-neutral-500">Built with <span class="text-neutral-400">Astro</span></div>
+    </div>
+  </div>
+</footer>

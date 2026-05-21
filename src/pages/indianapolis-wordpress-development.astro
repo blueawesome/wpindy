@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { work } from '../data/work';
+import StripeDivider from '../components/StripeDivider.astro';
+
+const relatedSlugs = ['st-julian-commerce7-wordpress-build','ai-search-plugin-admin-reporting','custom-woocommerce-checkout-flow'];
+const related = relatedSlugs.map((s) => work.find((w) => w.slug === s)).filter(Boolean) as any[];
+---
+
+<Layout
+  title="Indianapolis WordPress Development | WP Indy"
+  description="Indianapolis WordPress development for complex sites, custom plugins, API integrations, WooCommerce customization, Commerce7 integration, and agency support."
+>
+  <section class="bg-[#0b0f15] text-white">
+    <div class="shell py-16">
+      <p class="eyebrow text-white/60">Indianapolis WordPress Developer</p>
+      <div class="mt-3 lg:flex lg:items-start lg:gap-8">
+        <div class="lg:flex-1">
+          <h1 class="font-display text-[2.4rem] leading-[1.02] tracking-[-0.02em] text-white sm:text-[2.9rem] md:text-[3.6rem] lg:text-[3.8rem]">Indianapolis WordPress development for complex sites, <span class="hero-kicker-wrap"><span class="hero-kicker">plugins, and integrations.</span></span></h1>
+          <p class="mt-3 text-lg text-white/80 max-w-2xl">WP Indy is an Indianapolis-based WordPress development studio focused on custom plugins, API integrations, WooCommerce customization, Commerce7 integration, and technical support for agencies and growing teams.</p>
+          <div class="mt-5 flex items-center gap-4">
+            <a href="/contact/" class="btn-pill btn-pill--blue">Start a Project</a>
+            <a href="/work/" class="text-white/80 underline">View Work</a>
+          </div>
+        </div>
+
+        <div class="mt-6 lg:mt-0 lg:w-64">
+          <div class="rounded-lg bg-white/6 p-4 text-sm">
+            <div class="font-semibold">Core focus</div>
+            <div class="mt-3">
+              <span class="cred-pill">15+ years WordPress experience</span>
+              <span class="cred-pill">Custom plugins</span>
+              <span class="cred-pill">API integrations</span>
+              <span class="cred-pill">WooCommerce + Commerce7</span>
+              <span class="cred-pill">Agency support</span>
+              <span class="cred-pill">Indianapolis-based</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <StripeDivider />
+  </section>
+
+  <section class="bg-[#e7dfd2] text-neutral-900">
+    <div class="shell landing-section">
+  <h2 class="font-display text-2xl">WordPress help for Indianapolis teams</h2>
+      <p class="mt-3 text-neutral-800 max-w-3xl">I work with Indianapolis businesses, agencies, nonprofits, ecommerce teams, and marketing departments on WordPress projects that need more than a basic theme setup. That includes custom builds, platform integrations, WooCommerce logic, inherited-site cleanup, and technical rescue work. I’m based in Indianapolis, but I also work remotely with agencies and teams across the U.S.</p>
+
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <article class="service-card">
+          <h4 class="font-semibold">Custom WordPress Plugins</h4>
+          <p class="mt-2 text-sm text-neutral-700">Purpose-built functionality, admin tools, workflows, and integrations that extend WordPress beyond off-the-shelf plugins.</p>
+        </article>
+        <article class="service-card">
+          <h4 class="font-semibold">API Integrations</h4>
+          <p class="mt-2 text-sm text-neutral-700">Connect WordPress to CRMs, ecommerce systems, course platforms, and custom business APIs.</p>
+        </article>
+        <article class="service-card">
+          <h4 class="font-semibold">WooCommerce Customization</h4>
+          <p class="mt-2 text-sm text-neutral-700">Checkout flows, subscriptions, payment rules, product/course sync, and ecommerce edge cases.</p>
+        </article>
+        <article class="service-card">
+          <h4 class="font-semibold">Commerce7 + WordPress</h4>
+          <p class="mt-2 text-sm text-neutral-700">Advanced Commerce7 storefront and product-data integration for wineries and DTC brands.</p>
+        </article>
+        <article class="service-card">
+          <h4 class="font-semibold">Debugging & Rescue Work</h4>
+          <p class="mt-2 text-sm text-neutral-700">Stabilize inherited builds, clean up fragile code, and get complex WordPress projects back on track.</p>
+        </article>
+        <article class="service-card">
+          <h4 class="font-semibold">Custom Theme Implementation</h4>
+          <p class="mt-2 text-sm text-neutral-700">Clean, maintainable theme development for custom designs and content-heavy sites.</p>
+        </article>
+      </div>
+
+      <div class="mt-8">
+  <h3 class="font-display text-xl">Not just another website vendor</h3>
+        <p class="mt-3 text-neutral-800 max-w-3xl">WP Indy is a fit when the project involves custom functionality, integrations, ecommerce logic, or inherited code that needs senior judgment. I’m not trying to compete for cheap template-only builds — I’m usually brought in when the WordPress work is specific, technical, or important enough to require an experienced developer.</p>
+      </div>
+
+      <div class="mt-10">
+  <h3 class="font-display text-xl">Selected related work</h3>
+        <div class="mt-4 grid gap-4 sm:grid-cols-3">
+          {related.map((item) => (
+            <a href={`/work/${item.slug}/`} class="related-card">
+              <div class="text-sm font-semibold">{item.title}</div>
+              <div class="meta">{item.summary}</div>
+              <div class="cta">View Case Study →</div>
+            </a>
+          ))}
+        </div>
+        <div class="mt-4">
+          <a href="/work/" class="underline">View all work</a>
+        </div>
+      </div>
+
+      <div class="mt-8">
+  <h3 class="font-display text-xl">Local but not limited</h3>
+        <p class="mt-3 text-neutral-800 max-w-3xl">WP Indy is based in Indianapolis, Indiana. I’m available for local project conversations when useful, but most development work happens remotely through the same tools agencies and internal teams already use: email, GitHub, project management systems, staging sites, and clear technical documentation.</p>
+      </div>
+
+      <div class="mt-12">
+        <div class="cta-panel flex flex-col sm:flex-row items-start sm:items-center justify-between">
+          <div>
+            <h4 class="text-lg font-semibold">Need senior WordPress help in Indianapolis?</h4>
+            <p class="mt-2 text-neutral-800 max-w-2xl">If your project involves custom functionality, platform integration, ecommerce logic, or an inherited WordPress build that needs cleanup, send over the details.</p>
+          </div>
+          <div class="mt-4 sm:mt-0">
+            <a class="inline-block bg-wp-blue text-white px-4 py-2 rounded" href="/contact/">Start a Project</a>
+            <a class="ml-4 text-sm underline" href="/services/">View Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

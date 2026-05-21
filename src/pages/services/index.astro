@@ -1,0 +1,26 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import type { Service } from '../../data/services';
+import { services } from '../../data/services';
+---
+
+<Layout
+  title="WordPress Development Services | WP Indy"
+  description="Custom WordPress plugin development, API integrations, WooCommerce customization, Commerce7 integration, and rescue work for agencies and growing teams."
+>
+  <section class="bg-[#e7dfd2] text-neutral-900">
+    <div class="shell py-20">
+      <h1 class="font-display text-4xl">Services</h1>
+      <p class="mt-4 max-w-3xl text-neutral-700">A quick overview of the services WP Indy provides. Click a card to read details.</p>
+
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
+        {services.map((svc: Service) => (
+          <a href={svc.href} class="rounded-2xl border border-black/10 bg-white/55 p-6 hover:shadow-lg">
+            <h3 class="text-xl font-display">{svc.title}</h3>
+            <p class="mt-2 text-neutral-600">{svc.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,32 @@
+---
+/**
+ * EditorialImageSlot.astro
+ * Reusable placeholder slot for future collage/technical-ephemera imagery.
+ * Props:
+ *  - label?: string
+ *  - variant?: 'card' | 'frame' | 'wide' | 'square'
+ *  - aspect?: string (e.g. '16/10')
+ *  - class?: string
+ *  - src?: string
+ *  - alt?: string
+ */
+const { label = 'Collage image placeholder', variant = 'card', aspect = '16/10', class: extraClass = '', src = '', alt = '' } = Astro.props as any;
+
+const hasSrc = Boolean(src);
+---
+
+{hasSrc ? (
+  <picture class={`editorial-slot ${variant} ${extraClass}`}>
+    <img src={src} alt={alt ?? label} class="w-full h-full object-cover" />
+  </picture>
+) : (
+  <div class={`editorial-slot placeholder ${variant} ${extraClass}`} role="img" aria-label={label}>
+    <div class="slot-inner" aria-hidden="true">
+      <svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="slot-graphic">
+        <rect width="64" height="48" rx="6" fill="rgba(255,255,255,0.06)"/>
+        <path d="M8 34L24 18L40 34L56 18" stroke="rgba(255,255,255,0.12)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="slot-label">{label}</div>
+    </div>
+  </div>
+)}

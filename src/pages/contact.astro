@@ -1,0 +1,34 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Contact | WP Indy"
+  description="Tell WP Indy about a custom plugin, API integration, WooCommerce project, Commerce7 build, or senior WordPress support need."
+>
+  <section class="bg-[#e7dfd2] text-neutral-900">
+    <div class="shell py-20">
+      <h1 class="font-display text-4xl">Tell me what you’re working on.</h1>
+      <p class="mt-4 max-w-2xl text-neutral-700">Whether you need a custom plugin, an API integration, WooCommerce help, Commerce7 support, or senior backup for an agency project, send over the details and I’ll take a look.</p>
+
+      <form class="mt-8 max-w-xl space-y-4" action="mailto:tommy@wpindy.com" method="post" enctype="text/plain">
+        <input name="name" placeholder="Name" required class="w-full rounded-md border border-black/10 bg-white/70 px-3 py-2" />
+        <input name="email" type="email" placeholder="Email" required class="w-full rounded-md border border-black/10 bg-white/70 px-3 py-2" />
+        <input name="company" placeholder="Company / Agency" class="w-full rounded-md border border-black/10 bg-white/70 px-3 py-2" />
+        <input name="website" type="url" placeholder="Website" class="w-full rounded-md border border-black/10 bg-white/70 px-3 py-2" />
+        <select name="project_type" class="w-full rounded-md border border-black/10 bg-white/70 px-3 py-2 text-neutral-700">
+          <option value="">Project type</option>
+          <option>Custom plugin</option>
+          <option>API integration</option>
+          <option>WooCommerce</option>
+          <option>Commerce7 + WordPress</option>
+          <option>Debugging / rescue work</option>
+          <option>Agency support</option>
+        </select>
+        <input name="timeline" placeholder="Timeline" class="w-full rounded-md border border-black/10 bg-white/70 px-3 py-2" />
+        <textarea name="message" placeholder="Message" required class="h-32 w-full rounded-md border border-black/10 bg-white/70 px-3 py-2"></textarea>
+        <button class="btn-pill btn-pill--blue" type="submit">Start a Project</button>
+      </form>
+    </div>
+  </section>
+</Layout>

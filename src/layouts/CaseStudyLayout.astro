@@ -1,0 +1,130 @@
+---
+import Layout from './Layout.astro';
+import StripeDivider from '../components/StripeDivider.astro';
+const props: any = Astro.props;
+const item: any = props.item || {};
+const description =
+  item.summary ||
+  'Selected WordPress development work from WP Indy, including custom plugins, integrations, ecommerce logic, and technical rescue work.';
+---
+
+<Layout title={`${item.title} | WP Indy`} description={description}>
+  <section class="bg-[#111827] text-white">
+    <div class="shell py-16">
+      <a href="/work/" class="text-sm text-white/80 hover:underline">← Back to Work</a>
+      <div class="mt-4 grid gap-8 lg:grid-cols-2 items-start">
+        <div>
+          <p class="eyebrow text-white/60">{(item.workTypes && item.workTypes[0]) ?? item.clientVisibility}</p>
+          <h1 class="mt-2 text-3xl font-display">{item.title}</h1>
+          <p class="mt-3 text-lg text-white/80 max-w-2xl">{item.summary}</p>
+          {item.workTypes?.length ? (
+            <div class="mt-4 flex flex-wrap gap-2">
+              {(item.workTypes || []).map((t: string) => (
+                <span class="text-xs bg-white/10 px-3 py-1 rounded-md text-white/90">{t}</span>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        <div class="hidden lg:block">
+          <div class="rounded-lg overflow-hidden bg-neutral-100" style="aspect-ratio:16/10;">
+            {item.image ? <img src={item.image} alt={item.title} class="w-full h-full object-cover" /> : <div class="h-full w-full bg-neutral-200"></div>}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <StripeDivider />
+
+  <section class="bg-[#e7dfd2] text-neutral-900">
+    <div class="shell py-12">
+      <!-- Snapshot -->
+      <div class="grid gap-4 md:grid-cols-5 md:items-start">
+        <div class="md:col-span-3">
+          <div class="rounded-lg border border-black/10 bg-white/60 p-6">
+            <div class="grid gap-3 sm:grid-cols-2">
+              <div>
+                <h4 class="text-xs text-neutral-600">Client</h4>
+                <div class="mt-1 text-sm">{item.client ?? 'Client name withheld'}</div>
+              </div>
+              <div>
+                <h4 class="text-xs text-neutral-600">Role</h4>
+                <div class="mt-1 text-sm">{item.clientVisibility ?? 'Agency Partner'}</div>
+              </div>
+              <div>
+                <h4 class="text-xs text-neutral-600">Context</h4>
+                <div class="mt-1 text-sm">{item.context ?? 'Technical rebuild / integration'}</div>
+              </div>
+              <div>
+                <h4 class="text-xs text-neutral-600">Work</h4>
+                <div class="mt-1 text-sm">{(item.workTypes || []).join(', ')}</div>
+              </div>
+              <div>
+                <h4 class="text-xs text-neutral-600">Stack</h4>
+                <div class="mt-1 text-sm">{(item.stack || []).join(', ')}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <!-- placeholder for optional sidenotes or contacts -->
+        </div>
+      </div>
+
+      <!-- Problem -->
+      <div class="mt-8">
+        <h3 class="text-xl font-display tracking-tight">The problem</h3>
+        <p class="mt-3 text-neutral-800">{item.problem ?? 'The project required modernizing an aging WordPress codebase while integrating external ecommerce and supporting complex content workflows.'}</p>
+      </div>
+
+      <!-- What I built -->
+      <div class="mt-8">
+        <h3 class="text-xl font-display tracking-tight">What I built</h3>
+        <ul class="mt-3 list-inside list-disc text-neutral-800">
+          {(item.built || ['Custom theme and plugin development', 'API integrations', 'Ecommerce platform synchronization']).map((b: string) => (
+            <li class="mt-2">{b}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Why it mattered -->
+      <div class="mt-8">
+        <h3 class="text-xl font-display tracking-tight">Why it mattered</h3>
+        <p class="mt-3 text-neutral-800">{item.impact?.join(' ') ?? 'These changes reduced operational friction, improved editorial workflows, and enabled platform integrations that supported ongoing ecommerce and content operations.'}</p>
+      </div>
+
+      <!-- Technical notes -->
+      <div class="mt-8">
+        <h3 class="text-xl font-display tracking-tight">Technical notes</h3>
+        <ul class="mt-3 list-inside list-disc text-neutral-800">
+          {(item.technicalNotes || ['Custom post types and meta via ACF', 'Commerce7 API integration with server-side sync jobs', 'Plugin architecture following WP standards']).map((n: string) => (
+            <li class="mt-2">{n}</li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Related services -->
+      <div class="mt-8">
+        <h3 class="text-base font-semibold">Related services</h3>
+        <div class="mt-3 grid gap-3 sm:grid-cols-2">
+          {(item.services || []).map((s: any) => (
+            <a href={s.href} class="rounded-md border border-black/10 bg-white/60 p-3 text-sm hover:shadow">{s.label}</a>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-10 rounded-lg border border-black/10 bg-white/60 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between">
+        <div>
+          <h4 class="text-lg font-semibold">Need something similar?</h4>
+          <p class="mt-2 text-neutral-800">If your WordPress project needs custom functionality, platform integration, ecommerce logic, or a cleaner technical foundation, send over the details.</p>
+        </div>
+        <div class="mt-4 sm:mt-0">
+          <a class="inline-block bg-wp-blue text-white px-4 py-2 rounded" href="/contact/">Start a Project</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</Layout>

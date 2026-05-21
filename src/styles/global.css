@@ -1,0 +1,533 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Instrument Sans", system-ui, sans-serif;
+  --font-display: "Instrument Serif", Georgia, serif;
+}
+
+:root {
+  --font-sans: "Instrument Sans", sans-serif;
+  --font-display: "Instrument Serif", serif;
+
+  --color-wp-navy: #0d1326;
+  --color-wp-navy-soft: #101728;
+  --color-wp-navy-deep: #0a0f1d;
+
+  --color-wp-beige: #f3eee6;
+  --color-wp-beige-soft: #f7f3ec;
+  --color-wp-beige-deep: #e8dfd2;
+
+  --color-wp-panel-dark: #131826;
+  --color-wp-panel-dark-2: #171c2b;
+  --color-wp-panel-light: #ede6db;
+  --color-wp-panel-light-2: #e4dacb;
+
+  --color-wp-ink: #171717;
+  --color-wp-ink-soft: #44403c;
+  --color-wp-line-dark: rgba(255, 255, 255, 0.09);
+  --color-wp-line-light: rgba(23, 23, 23, 0.10);
+
+  --color-wp-blue: #2563eb;
+  --color-wp-blue-soft: #60a5fa;
+
+  --color-wp-red: #ef4444;
+  --color-wp-red-deep: #dc2626;
+
+  --color-wp-gold: #d4a017;
+  --color-wp-gold-soft: #e6b93d;
+
+  --color-wp-beige: #f6f2ea;
+  --color-wp-beige-top: #faf6ef;
+  --color-wp-beige-bottom: #f2ebdf;
+  --color-wp-beige-line: rgba(17, 17, 17, 0.10);
+  --color-wp-muted-dark: #5b5b57;
+}
+
+/* Explicit utility fallbacks for WP brand colors (used by StripeDivider and a few components)
+  These ensure the small three-color stripe renders even if Tailwind doesn't emit the utility classes. */
+.bg-wp-blue { background-color: var(--color-wp-blue) !important; }
+.bg-wp-red { background-color: var(--color-wp-red) !important; }
+.bg-wp-gold { background-color: var(--color-wp-gold) !important; }
+
+
+:root {
+  --text: #f3f4f6;
+  --muted: #a1a7b3;
+  --line: rgba(255, 255, 255, 0.09);
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Instrument Sans", system-ui, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(59, 130, 246, 0.12), transparent 22%),
+    radial-gradient(circle at 85% 15%, rgba(212, 160, 23, 0.10), transparent 18%),
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.035), transparent 32%),
+    linear-gradient(180deg, #090b10 0%, #0c0f17 46%, #0b0e15 100%);
+}
+
+.shell {
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.eyebrow {
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.grid-fade {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 82%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 82%);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.76);
+  font-weight: 500;
+  transition: color 0.18s ease, opacity 0.18s ease;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.mobile-nav {
+  position: relative;
+  margin-left: auto;
+}
+
+.mobile-nav-toggle {
+  list-style: none;
+  cursor: pointer;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.6rem 0.9rem;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.mobile-nav-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-nav[open] .mobile-nav-toggle {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: min(78vw, 280px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(19, 24, 38, 0.98), rgba(12, 15, 23, 0.98));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  padding: 10px;
+}
+
+.mobile-nav-panel a {
+  display: block;
+  border-radius: 10px;
+  padding: 0.75rem 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.95rem;
+  font-weight: 650;
+}
+
+.mobile-nav-panel a:hover,
+.mobile-nav-panel a:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+
+.mobile-nav-panel .mobile-nav-cta {
+  margin-top: 6px;
+  background: var(--color-wp-blue);
+  color: #fff;
+  text-align: center;
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-panel {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding-top: 12px;
+  z-index: 80;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.nav-dropdown-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+.nav-dropdown-menu {
+  position: relative;
+  min-width: 320px;
+  padding: 10px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(19, 24, 38, 0.98), rgba(12, 15, 23, 0.98));
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(10px);
+}
+
+.nav-dropdown:hover .nav-dropdown-panel,
+.nav-dropdown:focus-within .nav-dropdown-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.nav-dropdown-item {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  line-height: 1.35;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.nav-dropdown-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+.nav-dropdown-item span {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.hero-kicker-wrap {
+  display: inline-block;
+  margin-top: 0;
+  transform: translateY(-0.17em);
+}
+
+.hero-kicker {
+  position: relative;
+  display: inline-block;
+  /* slightly larger kicker so emphasis reads stronger but remains smaller than the main headline */
+  font-size: 0.9em;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  color: #dfe7ff;
+  z-index: 1;
+}
+
+.hero-kicker::after {
+  content: "";
+  position: absolute;
+  left: -0.08em;
+  right: -0.08em;
+  /* nudge the highlight slightly and make it a touch taller to match larger text */
+  bottom: 0.06em;
+  height: 0.44em;
+  border-radius: 0.2em;
+  background: rgba(220, 38, 38, 0.72);
+  z-index: -1;
+  transform: rotate(-0.8deg);
+}
+
+@media (min-width: 1024px) {
+  .hero-kicker {
+    font-size: 0.86em;
+  }
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.85rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+.btn-pill:hover {
+  transform: translateY(-1px);
+}
+
+.btn-pill--white {
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.btn-pill--blue {
+  background: #2563eb;
+  color: #ffffff;
+  border: 1px solid rgba(37, 99, 235, 0.9);
+}
+
+.btn-pill--red {
+  background: #ef4444;
+  color: #ffffff;
+  border: 1px solid rgba(239, 68, 68, 0.92);
+}
+
+.btn-pill--gold {
+  background: #eab308;
+  color: #111111;
+  border: 1px solid rgba(234, 179, 8, 0.92);
+}
+
+.btn-pill--blue:hover {
+  background: #1d4ed8;
+  border-color: #1d4ed8;
+}
+
+.btn-pill--red:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+}
+
+.btn-pill--gold:hover {
+  background: #ca8a04;
+  border-color: #ca8a04;
+}
+
+.site-header {
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.site-header.is-scrolled {
+  backdrop-filter: blur(14px);
+  background: rgba(10, 14, 24, 0.72);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.case-study-trigger.is-active {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.05);
+}
+
+.case-study-trigger.is-active h3 {
+  color: rgba(0, 0, 0, 0.96);
+}
+
+/* Work filter retro styling */
+.filter-bar {
+  /* transparent wrapper: compressed vertical spacing so filters take less visual weight */
+  background: transparent;
+  padding: 4px 0;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.filter-pill {
+  background: rgba(255,255,255,0.28);
+  border-radius: 8px; /* rounded-md feel */
+  padding-left: 0.75rem; /* px-3 */
+  padding-right: 0.75rem;
+  padding-top: 0.275rem; /* py-1.5 */
+  padding-bottom: 0.275rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  color: rgba(0,0,0,0.78);
+  font-weight: 600;
+  font-size: 0.75rem; /* text-sm-ish */
+  box-shadow: none;
+  transition: background-color 140ms ease, transform 100ms ease;
+  cursor: pointer;
+}
+
+.filter-pill:hover {
+  background: rgba(255,255,255,0.62);
+}
+
+.filter-pill.is-active {
+  background: rgba(17,24,39,0.95); /* near-black */
+  color: rgba(255,255,255,0.95);
+  border-color: rgba(255,255,255,0.06);
+}
+[x-cloak] { display: none !important; }
+
+.filter-pill:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* Reset / Clear button in the filter bar */
+.filter-reset {
+  color: rgba(0,0,0,0.68);
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filter-reset:hover {
+  background: rgba(255,255,255,0.06);
+  color: rgba(0,0,0,0.9);
+}
+.filter-reset:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+
+/* Alpine cloak to prevent flash of content */
+[x-cloak] { display: none !important; }
+
+/* Hint to the browser for smoother transform/opacity transitions on cards */
+.work-card-transition {
+  will-change: opacity, transform;
+}
+
+/* Layout tweaks for editorial spacing */
+.shell {
+  max-width: 1240px;
+}
+
+.mt-6.grid {
+  gap: 2rem; /* gap-8 equivalent */
+}
+
+.quiet-note {
+  border-top: 1px solid rgba(0,0,0,0.04);
+  padding-top: 1rem;
+  color: rgba(0,0,0,0.55);
+}
+
+/* Intro/body copy spacing corrections */
+.shell p { letter-spacing: normal; }
+.shell p { line-height: 1.6; }
+
+/* Credibility pills used in hero credibility card */
+.cred-pill {
+  display: inline-block;
+  padding: 6px 10px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.9);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Service card styling */
+.service-card {
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+}
+.service-card h4 { font-size: 1rem; }
+
+/* Related work cards */
+.related-card {
+  display: block;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  color: inherit;
+  text-decoration: none;
+}
+.related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.06);
+}
+.related-card .meta { margin-top: 0.5rem; color: rgba(0,0,0,0.65); font-size: 0.92rem; }
+.related-card .cta { margin-top: 0.75rem; display: inline-flex; align-items: center; gap: 6px; color: rgba(37,99,235,1); font-weight: 700; }
+
+/* Editorial image slot styles */
+.editorial-slot {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+
+.editorial-slot.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+  color: rgba(0,0,0,0.6);
+}
+
+.editorial-slot.wide { aspect-ratio: 16/7; }
+.editorial-slot.card { aspect-ratio: 16/10; }
+.editorial-slot.square { aspect-ratio: 1/1; }
+.editorial-slot.frame { aspect-ratio: 4/3; }
+
+.editorial-slot .slot-inner { text-align: center; color: rgba(255,255,255,0.75); }
+.editorial-slot .slot-graphic { opacity: 0.6; margin-bottom: 8px; }
+.editorial-slot .slot-label { font-size: 0.85rem; opacity: 0.85; }
+.editorial-slot.placeholder .slot-graphic { stroke: rgba(0,0,0,0.12); fill: rgba(0,0,0,0.02); }
+
+@media (max-width: 640px) {
+  .editorial-slot { display: none; }
+}
+
+/* Distinct final CTA panel */
+.cta-panel {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,255,255,0.82));
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Slightly more generous spacing between major sections on landing pages */
+.landing-section { padding-top: 3rem; padding-bottom: 3rem; }
+
+/* subtle noise overlay for retro feel */
+.filter-bar::after {
+  /* removed noise overlay when using transparent wrapper */
+  content: none;
+}

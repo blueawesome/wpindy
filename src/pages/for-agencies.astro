@@ -1,0 +1,357 @@
+---
+import Layout from '../layouts/Layout.astro';
+import EditorialImageSlot from '../components/EditorialImageSlot.astro';
+import StripeDivider from '../components/StripeDivider.astro';
+
+const pageTitle = 'WordPress Development for Agencies | White-Label & Senior Technical Support | WP Indy';
+const pageDescription =
+  'Senior white-label WordPress development for agencies that need help with custom plugins, API integrations, WooCommerce, debugging, refactoring, and complex builds.';
+
+const reasons = [
+  {
+    title: 'White-label when needed',
+    text: 'Comfortable working behind the scenes so your agency can deliver great work without adding friction or confusion for the client.',
+  },
+  {
+    title: 'Senior help without adding headcount',
+    text: 'A good fit when you need experienced WordPress support for a scoped build, a hard feature, or a messy technical problem.',
+  },
+  {
+    title: 'Strong on the difficult stuff',
+    text: 'Custom plugins, integrations, WooCommerce edge cases, debugging, refactoring, migrations, and architecture decisions.',
+  },
+  {
+    title: 'Fluent in agency workflow',
+    text: 'Used to collaborating with project managers, designers, marketers, and stakeholders while working within timelines and process.',
+  },
+];
+
+const services = [
+  'Custom WordPress plugin development',
+  'API integrations and third-party system sync',
+  'WooCommerce and subscription customization',
+  'Debugging, refactoring, and rescue work',
+  'CMS migrations and rebuilds',
+  'Commerce7 + WordPress integration',
+];
+
+const workflow = [
+  {
+    title: 'Easy to plug in',
+    text: 'I can work from specs, tickets, calls, Looms, or existing documentation—whatever fits your process best.',
+  },
+  {
+    title: 'Clear communication',
+    text: 'Used to agency cadence and review cycles. I try to keep things practical, direct, and low-drama.',
+  },
+  {
+    title: 'Flexible role',
+    text: 'I can lead a technical feature, support an existing team, or quietly handle the backend-heavy parts of a project.',
+  },
+  {
+    title: 'Client-aware judgment',
+    text: 'Because I’ve worked both freelance and inside agencies, I understand the technical work and the client-facing realities around it.',
+  },
+];
+
+const caseStudies = [
+  {
+    eyebrow: 'Commerce7 / WordPress',
+    title: 'Commerce7 storefront integration',
+    text: 'Integrated Commerce7 into a custom WordPress build for a winery with improved filtering, product architecture, and storefront flexibility.',
+    href: '/work/st-julian-commerce7-wordpress-build/',
+  },
+  {
+    eyebrow: 'Custom plugin / AI',
+    title: 'AI search plugin with reporting tools',
+    text: 'Built a custom WordPress plugin that connected a client’s proprietary AI search system and added admin reporting and export functionality.',
+    href: '/work/ai-search-plugin-admin-reporting/',
+  },
+  {
+    eyebrow: 'Rebuild / cleanup',
+    title: 'Rebuilds, refactors, and migration support',
+    text: 'Helped modernize brittle WordPress builds by cleaning up fragile code, rebuilding functionality, and improving long-term maintainability.',
+    href: '/work/service-business-custom-checkout-flow/',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Do you work white-label?',
+    a: 'Yes. I’m comfortable working behind the scenes with agencies and fitting into the client relationship in whatever way makes the most sense for the project.',
+  },
+  {
+    q: 'Can you join an existing build mid-project?',
+    a: 'Yes. A lot of the work I do is stepping into a project that already exists and handling a difficult feature, integration, cleanup, or rescue situation.',
+  },
+  {
+    q: 'Do you only help with WordPress theme work?',
+    a: 'No. The strongest fit is usually deeper WordPress development: custom plugins, integrations, WooCommerce logic, debugging, refactoring, migrations, and technical problem-solving.',
+  },
+  {
+    q: 'Can you collaborate with our PM, designer, or strategist?',
+    a: 'Yes. I’m used to agency workflow and working with project managers, designers, marketers, and other developers.',
+  },
+  {
+    q: 'Do you work on scoped projects or ongoing support?',
+    a: 'Both. Some agencies bring me in for a specific build or technical problem, while others need flexible senior support over time.',
+  },
+];
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <section class="relative overflow-hidden bg-[#07111f] text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(50,110,255,0.18),transparent_36%),radial-gradient(circle_at_85%_20%,rgba(197,51,43,0.12),transparent_22%),linear-gradient(to_bottom,rgba(255,255,255,0.03),rgba(255,255,255,0))]"></div>
+  <div class="absolute inset-0 opacity-[0.08] bg-[linear-gradient(rgba(255,255,255,.25)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.25)_1px,transparent_1px)] bg-size-[56px_56px]"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-18">
+      <div class="max-w-4xl">
+        <p class="mb-5 text-sm font-semibold uppercase tracking-[0.18em] text-white/65">
+          For Agencies
+        </p>
+
+        <h1 class="font-display text-5xl leading-[0.95] tracking-tight md:text-7xl">
+          Senior WordPress development 
+           <span class="hero-kicker-wrap">
+                <span class="hero-kicker">for agencies</span>
+              </span>
+        </h1>
+
+        <div class="mt-8">
+          <EditorialImageSlot label="Future editorial image" variant="card" />
+        </div>
+
+        <p class="mt-8 max-w-3xl text-lg leading-8 text-white/78 md:text-xl">
+          White-label technical support for agencies that need experienced help with
+          custom plugins, API integrations, WooCommerce, debugging, refactoring, and
+          complex builds.
+        </p>
+
+        <p class="mt-5 max-w-3xl text-base leading-8 text-white/68 md:text-lg">
+          I’ve freelanced for agencies for years and also worked full-time inside a few,
+          so I understand both the delivery side and the client-facing realities. That
+          makes it easier for me to slot into your workflow, handle the hard parts, and
+          help your team deliver strong work.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href="/contact/"
+            class="inline-flex items-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:-translate-y-px"
+          >
+            Start a Conversation
+          </a>
+          <a
+            href="/work/"
+            class="inline-flex items-center rounded-full border border-white/15 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/30 hover:bg-white/5"
+          >
+            View Work
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="w-full">
+  <div class="h-1 w-full bg-wp-blue"></div>
+  <div class="h-1 w-full bg-wp-red"></div>
+  <div class="h-1 w-full bg-wp-gold"></div>
+  </div>
+
+  <section class="bg-[#e7dfd2] text-neutral-900">
+    <div class="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+      <div class="max-w-3xl">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-600">
+          Why agencies bring me in
+        </p>
+        <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
+          Senior help that fits into your existing workflow.
+        </h2>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-700">
+          Agencies usually don’t need another generic freelancer. They need someone who
+          can handle complex WordPress work, communicate clearly, and support delivery
+          without becoming a bottleneck.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2">
+        {reasons.map((item) => (
+          <div class="rounded-3xl border border-black/10 bg-white/50 p-7">
+            <h3 class="text-2xl font-display tracking-tight">{item.title}</h3>
+            <p class="mt-3 text-base leading-7 text-neutral-700">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white text-neutral-900">
+    <div class="mx-auto grid max-w-7xl gap-14 px-6 py-20 md:px-10 md:py-28 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)]">
+      <div>
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+          Typical agency support
+        </p>
+        <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
+          The kinds of projects agencies usually bring me into.
+        </h2>
+        <p class="mt-6 max-w-xl text-lg leading-8 text-neutral-700">
+          This is usually not simple brochure-site assembly. The strongest fit is when a
+          project has custom requirements, technical complexity, or a backlog of messy
+          work that needs experienced attention.
+        </p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2">
+        {services.map((service) => (
+          <div class="rounded-3xl border border-black/10 bg-neutral-50 px-6 py-5 text-base font-medium leading-7 text-neutral-800">
+            {service}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#f6f3ee] text-neutral-900">
+    <div class="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+      <div class="max-w-3xl">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+          How I fit into your team
+        </p>
+        <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
+          Built to support agency process, not fight it.
+        </h2>
+      </div>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {workflow.map((item) => (
+          <div class="rounded-3xl border border-black/10 bg-white p-7">
+            <h3 class="text-xl font-display tracking-tight">{item.title}</h3>
+            <p class="mt-3 text-base leading-7 text-neutral-700">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#07111f] text-white">
+    <div class="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+      <div class="max-w-3xl">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-white/60">
+          Selected work
+        </p>
+        <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
+          A few examples of the kind of technical work I help agencies deliver.
+        </h2>
+      </div>
+
+      <div class="mt-14 grid gap-6 lg:grid-cols-3">
+        {caseStudies.map((study) => (
+          <article class="flex h-full flex-col rounded-3xl border border-white/10 bg-white/5 p-7">
+            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-white/55">
+              {study.eyebrow}
+            </p>
+            <h3 class="mt-4 text-2xl font-display tracking-tight">{study.title}</h3>
+            <p class="mt-4 flex-1 text-base leading-7 text-white/72">{study.text}</p>
+            <a
+              href={study.href}
+              class="mt-8 inline-flex items-center text-sm font-semibold text-white"
+            >
+              View case study
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white text-neutral-900">
+    <div class="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
+      <div class="max-w-3xl">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
+          Testimonials
+        </p>
+        <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
+          Feedback from agency and client-side collaborators.
+        </h2>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-700">
+          Replace these placeholders with real quotes once you’ve gathered them. This
+          page will benefit a lot from testimonials that mention communication,
+          reliability, technical depth, and fitting into an existing team.
+        </p>
+      </div>
+
+      <div class="mt-14 grid gap-6 lg:grid-cols-3">
+        <blockquote class="rounded-3xl border border-black/10 bg-neutral-50 p-7">
+          <p class="text-lg leading-8 text-neutral-800">
+            “Tommy stepped into a complex project and handled the hard technical work
+            without creating extra overhead for our team.”
+          </p>
+          <footer class="mt-6 text-sm text-neutral-500">Agency Owner · Placeholder</footer>
+        </blockquote>
+
+        <blockquote class="rounded-3xl border border-black/10 bg-neutral-50 p-7">
+          <p class="text-lg leading-8 text-neutral-800">
+            “He fit naturally into our workflow, communicated clearly, and helped us
+            deliver with confidence.”
+          </p>
+          <footer class="mt-6 text-sm text-neutral-500">Project Lead · Placeholder</footer>
+        </blockquote>
+
+        <blockquote class="rounded-3xl border border-black/10 bg-neutral-50 p-7">
+          <p class="text-lg leading-8 text-neutral-800">
+            “A strong partner for the kinds of WordPress work that go beyond templates
+            and off-the-shelf plugins.”
+          </p>
+          <footer class="mt-6 text-sm text-neutral-500">Creative Director · Placeholder</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#e7dfd2] text-neutral-900">
+    <div class="mx-auto max-w-5xl px-6 py-20 md:px-10 md:py-28">
+      <div class="max-w-3xl">
+        <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-600">
+          FAQ
+        </p>
+        <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
+          A few common questions from agencies.
+        </h2>
+      </div>
+
+      <div class="mt-14 space-y-4">
+        {faqs.map((item) => (
+          <details class="group rounded-3xl border border-black/10 bg-white/55 p-6">
+            <summary class="cursor-pointer list-none pr-8 text-xl font-semibold tracking-tight">
+              {item.q}
+            </summary>
+            <p class="mt-4 max-w-3xl text-base leading-7 text-neutral-700">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-[#07111f] text-white">
+    <div class="mx-auto max-w-5xl px-6 py-20 text-center md:px-10 md:py-28">
+      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-white/60">
+        Final CTA
+      </p>
+      <h2 class="font-display text-4xl leading-tight tracking-tight md:text-6xl">
+        Need senior WordPress help on an agency project?
+      </h2>
+      <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/72">
+        If you need white-label support, a stronger technical partner, or help getting a
+        complex build over the line, get in touch.
+      </p>
+      <div class="mt-10">
+        <a
+          href="/contact/"
+          class="inline-flex items-center rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-black transition hover:-translate-y-px"
+        >
+          Start a Conversation
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

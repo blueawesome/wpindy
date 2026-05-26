@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "wpindy",
   "main": "src/worker.ts",
+  "keep_vars": true,
   "compatibility_date": "2026-05-21",
   "assets": {
     "directory": "./dist",

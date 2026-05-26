@@ -55,21 +55,29 @@ const projects = [
     gallery: [
       {
         image: '/work/ai-search1.png',
+        width: 2336,
+        height: 1536,
         title: 'Frontend search experience',
         text: 'The client had an LLM trained on their intranet site containing documents in multiple languages.  I build an AJAX-powered interface to submit questions.',
       },
       {
         image: '/work/ai-search2.png',
+        width: 2100,
+        height: 1138,
         title: 'Chat Interface',
         text: 'The front-end experience includes a pleasant placeholder animation while answers and relevant documents are being fetched, quickly followed by the AI answer.',
       },
       {
         image: '/work/ai-search3.png',
+        width: 2176,
+        height: 1384,
         title: 'References',
         text: 'The AI identifies relevant references and documents on the website and the plugin parses those into styled links that accompany the answer text.',
       },
       {
         image: '/work/ai-search4.png',
+        width: 2804,
+        height: 1218,
         title: 'Admin screen view',
         text: 'Super Admins of the site can search, delete, and export specific searches and activity, as well as manage their API keys and settings.',
       },
@@ -139,7 +147,6 @@ const stack = [
 <LandingLayout
   title="Tommy Day | Senior Contract WordPress/PHP Developer"
   description="Senior contract WordPress and PHP developer for custom plugins, API integrations, WooCommerce, inherited sites, and agency support."
-  turnstile={Boolean(turnstileSiteKey)}
 >
   <div id="top" class="min-h-screen text-white">
     <header class="site-header fixed inset-x-0 top-0 z-50 pb-5 pt-5 transition duration-300">
@@ -477,6 +484,10 @@ const stack = [
                       <img
                         src={item.image}
                         alt={item.title}
+                        width={item.width}
+                        height={item.height}
+                        loading="lazy"
+                        decoding="async"
                         class="aspect-video w-full rounded-xl border border-black/10 object-cover"
                       />
                     ) : (
@@ -545,6 +556,37 @@ const stack = [
 
     onScroll();
     window.addEventListener('scroll', onScroll);
+
+    const turnstileWidget = document.querySelector('.cf-turnstile');
+    const contactSection = document.querySelector('#contact');
+    let turnstileRequested = false;
+
+    const loadTurnstile = () => {
+      if (!turnstileWidget || turnstileRequested || window.turnstile) return;
+      turnstileRequested = true;
+
+      const script = document.createElement('script');
+      script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    };
+
+    if (turnstileWidget && contactSection && 'IntersectionObserver' in window) {
+      const turnstileObserver = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            loadTurnstile();
+            turnstileObserver.disconnect();
+          }
+        },
+        { rootMargin: '700px 0px' },
+      );
+
+      turnstileObserver.observe(contactSection);
+    } else {
+      loadTurnstile();
+    }
 
     document.querySelectorAll('[data-modal-open]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -625,6 +667,8 @@ const stack = [
 
     const form = document.querySelector('#contact-form');
     const status = document.querySelector('#contact-form-status');
+
+    form?.addEventListener('focusin', loadTurnstile, { once: true });
 
     form?.addEventListener('submit', async (event) => {
       event.preventDefault();

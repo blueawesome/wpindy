@@ -1,339 +1,411 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import EditorialImageSlot from '../components/EditorialImageSlot.astro';
+import LandingLayout from '../layouts/LandingLayout.astro';
 import StripeDivider from '../components/StripeDivider.astro';
 
-const caseStudies = [
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
+
+const fitCards = [
   {
-    id: 'commerce7',
-    eyebrow: 'Commerce7 / WordPress',
-    title: 'Commerce7 + WordPress storefront integration',
-    summary:
-      'Reworked a winery storefront by integrating Commerce7 into a custom WordPress build with faster filtering, custom field support, and a more flexible product architecture.',
-    detail:
-      'A good example of going well beyond default embeds to create a smoother storefront experience and a more maintainable technical setup.',
-    href: '/work/st-julian-commerce7-wordpress-build/',
-    image: '/work/placeholder-st-julian.svg',
-    imageAlt: 'Commerce7 and WordPress storefront case study screenshot',
-    tags: ['Filtering UX', 'Custom plugin work', 'Product architecture'],
+    title: 'Contract WordPress/PHP roles',
+    text: 'Senior implementation support for teams that need someone who can read the codebase, understand the business problem, and start moving without a lot of hand-holding.',
   },
   {
-    id: 'ai-search',
-    eyebrow: 'Custom plugin / AI',
-    title: 'AI search integration with admin reporting',
-    summary:
-      'Built a custom WordPress plugin that connected a client’s proprietary AI search system to their website, then added admin reporting and export tools for internal visibility.',
-    detail:
-      'This is the kind of project that shows WordPress acting as a real application layer, not just a CMS for publishing pages.',
-    href: '/work/ai-search-plugin-admin-reporting/',
-    image: '/work/placeholder-ai-search.svg',
-    imageAlt: 'AI search plugin admin reporting screenshot',
-    tags: ['LLM integration', 'Admin tools', 'Reporting & export'],
+    title: 'Custom plugins and backend tools',
+    text: 'Purpose-built functionality, admin screens, reporting tools, data workflows, and WordPress behavior that off-the-shelf plugins cannot quite handle.',
   },
   {
-    id: 'rebuilds',
-    eyebrow: 'Rebuild / migration',
-    title: 'Rebuilds, cleanup, and migration work',
-    summary:
-      'Helped modernize aging WordPress setups by rebuilding brittle functionality, cleaning up fragile code, and creating a stronger foundation for future development.',
-    detail:
-      'The kind of work where judgment, clean execution, and long-term maintainability matter more than flashy features.',
-    href: '/work/service-business-custom-checkout-flow/',
-    image: '/work/placeholder-service-business.svg',
-    imageAlt: 'WordPress rebuild or migration case study screenshot',
-    tags: ['Refactoring', 'Technical cleanup', 'Migration support'],
+    title: 'API integrations and data sync',
+    text: 'Connections between WordPress and external systems, from ecommerce platforms and course tools to proprietary APIs and internal business systems.',
+  },
+  {
+    title: 'WooCommerce and ecommerce logic',
+    text: 'Checkout flows, subscriptions, product rules, service eligibility, payment-plan logic, Commerce7 work, and other ecommerce edge cases.',
+  },
+  {
+    title: 'Inherited sites and rescue work',
+    text: 'Debugging, cleanup, refactoring, performance audits, and stabilizing builds that have become fragile or hard for a team to maintain.',
+  },
+  {
+    title: 'Agency overflow and white-label work',
+    text: 'Comfortable working behind the scenes with agency teams, existing project managers, staging workflows, GitHub, and client constraints.',
   },
 ];
 
+const projects = [
+  {
+    meta: 'Named client / Gutenberg',
+    title: 'Finish Line content platform rebuild',
+    text: 'Rebuilt the official Finish Line blog as a WordPress/Gutenberg project focused on flexible publishing for a large retail content platform.',
+    tags: ['WordPress', 'Gutenberg', 'Theme build'],
+  },
+  {
+    meta: 'Commerce7 / WordPress',
+    title: 'St. Julian ecommerce integration',
+    text: 'Built a custom WordPress rebuild and Commerce7 integration connecting product data, club functionality, event tickets, and storefront content.',
+    tags: ['Commerce7', 'ACF', 'API integration'],
+  },
+  {
+    meta: 'Custom plugin / AI search',
+    title: 'AI search with admin reporting',
+    text: 'Created a WordPress plugin that integrated a proprietary AI search system and added internal reporting and export tools.',
+    tags: ['Custom plugin', 'REST APIs', 'Admin tools'],
+  },
+  {
+    meta: 'Agency partner / WooCommerce',
+    title: 'Maestro + Loop course extension',
+    text: 'Built in partnership with Maestro: a reusable WooCommerce extension for importing, selling, and syncing Loop course data.',
+    tags: ['WooCommerce', 'Loop', 'Data sync'],
+  },
+  {
+    meta: 'Service business / API flow',
+    title: 'Custom checkout and scheduling flow',
+    text: 'Built a PHP/JS flow for ZIP lookup, service availability, add-ons, payment plans, customer creation, invoices, and scheduled services through an external API.',
+    tags: ['PHP', 'JavaScript', 'Checkout logic'],
+  },
+];
+
+const stack = [
+  'WordPress',
+  'PHP',
+  'JavaScript',
+  'WooCommerce',
+  'ACF',
+  'Gutenberg',
+  'REST APIs',
+  'Custom plugins',
+  'Commerce7',
+  'Shopify',
+  'Git',
+  'CLI',
+  'Astro',
+  'Tailwind',
+];
 ---
 
-<Layout
-  title="WP Indy | Senior WordPress Development"
-  description="Senior WordPress development, API integrations, and custom plugins for agencies and teams."
+<LandingLayout
+  title="Tommy Day | Senior Contract WordPress/PHP Developer"
+  description="Senior contract WordPress and PHP developer for custom plugins, API integrations, WooCommerce, inherited sites, and agency support."
+  turnstile={Boolean(turnstileSiteKey)}
 >
+  <div id="top" class="min-h-screen bg-[#0b0e15] text-white">
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0b0e15]/88 backdrop-blur-md">
+      <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 md:px-8">
+        <a href="#top" class="group leading-none" aria-label="Back to top">
+          <span class="block font-display text-2xl text-white">WP Indy</span>
+          <span class="mt-1 block text-xs font-semibold uppercase tracking-[0.18em] text-white/48">Tommy Day</span>
+        </a>
 
+        <nav class="hidden items-center gap-5 text-sm font-semibold text-white/68 md:flex" aria-label="Landing page">
+          <a href="#fit" class="transition hover:text-white">Fit</a>
+          <a href="#work" class="transition hover:text-white">Work</a>
+          <a href="#stack" class="transition hover:text-white">Stack</a>
+          <a href="#contact" class="transition hover:text-white">Contact</a>
+        </nav>
 
-  <main class="relative z-0">
-	
-    <section class="shell pb-10 md:pt-18 md:pb-28">
-      <div class="max-w-5xl">
+        <div class="flex items-center gap-3">
+          <a
+            href="https://www.linkedin.com/in/tommy-day"
+            class="hidden rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/78 transition hover:border-white/28 hover:text-white sm:inline-flex"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a href="/files/TommyDay_Resume.pdf" class="hidden rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/78 transition hover:border-white/28 hover:text-white sm:inline-flex">
+            Resume
+          </a>
+          <a href="#contact" class="rounded-full bg-wp-blue px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-700">
+            Email
+          </a>
+        </div>
+      </div>
+    </header>
 
-        <div class="mt-6 flex items-start gap-5 md:gap-7">
-          <div>
-            <h1 class="font-display text-[2.8rem] leading-[1.02] tracking-[-0.02em] text-white sm:text-[3.6rem] md:text-[4rem] lg:text-[4.2rem]">
-              WordPress development,  <br />
-			  API integrations, 
-              &amp; custom plugins <br />
-              <span class="hero-kicker-wrap">
-                <span class="hero-kicker">for agencies and teams.</span>
-              </span>
+    <main>
+      <section class="relative overflow-hidden">
+        <div class="absolute inset-0 grid-fade opacity-35"></div>
+        <div class="mx-auto max-w-7xl px-5 py-18 md:px-8 md:py-24 lg:py-28">
+          <div class="relative max-w-5xl">
+            <p class="eyebrow">Senior contract WordPress/PHP developer</p>
+            <h1 class="mt-5 font-display text-[3.15rem] leading-[0.98] text-white sm:text-6xl md:text-7xl lg:text-[5.8rem]">
+              Custom plugins, API integrations, and inherited WordPress systems.
             </h1>
-
-            <p class="mt-6 max-w-3xl text-lg leading-8 text-white/72 md:text-xl">
-              15+ years of hands-on WordPress problem-solving, from custom functionality and technical architecture to complex integrations and advanced implementation.
+            <p class="mt-7 max-w-3xl text-lg leading-8 text-white/74 md:text-xl">
+              I am Tommy Day, an Indianapolis-based developer with 17 years of hands-on WordPress experience across freelance, agency, and product work. I help agencies, recruiters, and teams ship the parts of WordPress projects that need senior judgment.
             </p>
+
+            <div class="mt-9 flex flex-wrap items-center gap-4">
+              <a href="#contact" class="btn-pill btn-pill--blue">Talk about a contract role</a>
+              <a
+                href="https://www.linkedin.com/in/tommy-day"
+                class="btn-pill btn-pill--white"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View LinkedIn
+              </a>
+              <a href="/files/TommyDay_Resume.pdf" class="text-base font-semibold text-white/72 underline decoration-white/28 underline-offset-4 transition hover:text-white">
+                Download resume
+              </a>
+            </div>
+
+            <div class="mt-12 grid gap-3 text-sm text-white/70 sm:grid-cols-3">
+              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <span class="block text-lg font-semibold text-white">17 years</span>
+                WordPress, PHP, ecommerce, and agency production work.
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <span class="block text-lg font-semibold text-white">Remote-ready</span>
+                Comfortable with GitHub, staging sites, async notes, and embedded teams.
+              </div>
+              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                <span class="block text-lg font-semibold text-white">Indianapolis</span>
+                Based in Indy, working with agencies and teams anywhere.
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div class="mt-8 flex flex-wrap items-center gap-5">
-			<a href="/contact/" class="btn-pill btn-pill--white">Start a Project</a>
-			<a href="/services/" class="text-base font-medium text-white/75 transition hover:text-white">
-				View Services
-			</a>
-		</div>
-		
+      <StripeDivider />
 
-     
-      </div>
-    </section><!--END Hero-->
-
-
-  <StripeDivider />
-
-	<section class="bg-[#e7dfd2] text-neutral-900">
-		<div class="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
-			<div class="max-w-3xl">
-			<p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-600">
-				Flexible support for agencies and in-house teams
-			</p>
-
-            <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
-				A Senior WordPress developer who can lead complex work or strengthen the team you already have.
-			</h2>
-
-			<p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-700">
-				With 15+ years of hands-on WordPress experience across freelance and agency environments,
-				I can step in as a technical lead, a white-label partner, or a focused senior developer for
-				the parts of a project that need real depth.
-			</p>
-			</div>
-
-			<div class="mt-14 grid gap-6 md:grid-cols-2">
-			<div class="rounded-3xl border border-black/10 bg-white/60 p-7">
-				<h3 class="text-xl font-semibold tracking-tight">Complex builds, not just assembly</h3>
-				<p class="mt-3 leading-7 text-neutral-700">
-				Custom plugins, integrations, subscriptions, debugging, refactoring, and backend problem-solving.
-				</p>
-			</div>
-
-			<div class="rounded-3xl border border-black/10 bg-white/60 p-7">
-				<h3 class="text-xl font-semibold tracking-tight">White-label when needed</h3>
-				<p class="mt-3 leading-7 text-neutral-700">
-				Comfortable supporting agencies and teams behind the scenes while fitting smoothly into existing workflows.
-				</p>
-			</div>
-
-		
-
-			<div class="rounded-3xl border border-black/10 bg-white/60 p-7">
-				<h3 class="text-xl font-semibold tracking-tight">Fluent in agency and client work</h3>
-				<p class="mt-3 leading-7 text-neutral-700">
-				Used to balancing technical decisions, deadlines, communication, and real-world business constraints.
-				</p>
-			</div>
-
-			<div class="rounded-3xl border border-black/10 bg-white/60 p-7">
-				<h3 class="text-xl font-semibold tracking-tight">Rebuilds and migrations</h3>
-				<p class="mt-3 leading-7 text-neutral-700">
-				Whether you’re moving from another CMS, modernizing an aging site, or rebuilding a brittle setup in WordPress, I can help plan and execute the technical side cleanly.
-				</p>
-			</div>
-
-			</div>
-		</div>
-
-      <!-- optional editorial slot near services -->
-      <div class="mt-8">
-        <EditorialImageSlot label="Future editorial image" variant="card" />
-      </div>
-		</section>
-
-
-	<!--END Beige Section-->
-
-	<div class="w-full">
-    <div class="h-1 w-full bg-wp-gold"></div>
-	</div>
-
-
-<section class="bg-white text-neutral-900">
-  <div class="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
-    <div class="max-w-3xl">
-      <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">
-        Selected case studies
-      </p>
-  <h2 class="font-display text-4xl leading-tight tracking-tight md:text-5xl">
-        A few examples of the work I get brought in for.
-      </h2>
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-neutral-700">
-        From custom plugins and API integrations to rebuilds and storefront architecture,
-        here are a few examples of the kind of WordPress work I help teams solve.
-      </p>
-    </div>
-
-    <div
-      class="case-studies mt-14 grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.2fr)] lg:items-start"
-      data-case-studies
-      data-initial-id={caseStudies[0].id}
-    >
-      <div class="space-y-4">
-        {caseStudies.map((study, index) => (
-          <button
-            type="button"
-            class={`case-study-trigger group w-full rounded-3xl border border-black/10 bg-neutral-50 p-6 text-left transition hover:border-black/20 hover:bg-neutral-100 ${
-              index === 0 ? 'is-active' : ''
-            }`}
-            data-case-trigger
-            data-case-id={study.id}
-            aria-pressed={index === 0 ? 'true' : 'false'}
-          >
-            <p class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">
-              {study.eyebrow}
+      <section id="fit" class="bg-[#f6f2ea] text-neutral-950">
+        <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-22">
+          <div class="max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Best fit</p>
+            <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
+              Useful when the work is too custom, too integrated, or too important to hand to a generalist.
+            </h2>
+            <p class="mt-5 text-lg leading-8 text-neutral-700">
+              I am not usually the right fit for brand-new Elementor or Divi builds. I am a good fit when an existing site needs debugging, cleanup, integrations, or custom functionality around it.
             </p>
-            <h3 class="mt-3 text-2xl font-semibold tracking-tight">
-              {study.title}
-            </h3>
-            <p class="mt-3 text-base leading-7 text-neutral-700">
-              {study.summary}
-            </p>
-          </button>
-        ))}
-      </div>
+          </div>
 
-      <div class="lg:sticky lg:top-28">
-  <article class="overflow-hidden rounded-4xl border border-black/10 bg-neutral-50 shadow-[0_18px_50px_rgba(0,0,0,0.06)]">
-          <div class="border-b border-black/10 px-5 py-3">
-            <div class="flex items-center gap-2">
-              <span class="h-2.5 w-2.5 rounded-full bg-black/15"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-black/10"></span>
-              <span class="h-2.5 w-2.5 rounded-full bg-black/10"></span>
+          <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {fitCards.map((card) => (
+              <article class="rounded-2xl border border-black/10 bg-white/62 p-6 shadow-sm">
+                <h3 class="text-lg font-semibold tracking-tight text-neutral-950">{card.title}</h3>
+                <p class="mt-3 leading-7 text-neutral-700">{card.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="bg-white text-neutral-950">
+        <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-22">
+          <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+            <div class="lg:sticky lg:top-28">
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Selected experience</p>
+              <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
+                A few examples of the kind of work I get brought in for.
+              </h2>
+              <p class="mt-5 text-lg leading-8 text-neutral-700">
+                Some projects are public, some are agency-partner work, and some have to stay partly anonymized. The through-line is custom WordPress implementation, integration work, and practical problem-solving.
+              </p>
+            </div>
+
+            <div class="grid gap-5">
+              {projects.map((project) => (
+                <article class="rounded-2xl border border-black/10 bg-[#f6f2ea] p-6 shadow-sm">
+                  <p class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">{project.meta}</p>
+                  <h3 class="mt-3 text-2xl font-semibold tracking-tight text-neutral-950">{project.title}</h3>
+                  <p class="mt-3 leading-7 text-neutral-700">{project.text}</p>
+                  <ul class="mt-5 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <li class="rounded-full border border-black/10 bg-white/70 px-3 py-1 text-sm font-medium text-neutral-700">{tag}</li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <StripeDivider />
+
+      <section class="bg-[#e7dfd2] text-neutral-950">
+        <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-22">
+          <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
+            <div>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">How I work</p>
+              <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
+                Calm senior support for teams that already have momentum.
+              </h2>
+            </div>
+            <div class="space-y-5 text-lg leading-8 text-neutral-700">
+              <p>
+                I freelanced for almost 10 years, with a lot of that work happening as contract support for agencies. I speak that language, and I have also worked full-time inside agency teams.
+              </p>
+              <p>
+                A lot of integration work starts with a platform I have not seen before. The value is knowing how to read the docs, understand the data model, and make it fit WordPress cleanly.
+              </p>
+              <p>
+                I can work independently, embed with an existing team, document decisions, and communicate clearly when a project needs a practical technical path forward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="stack" class="bg-white text-neutral-950">
+        <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-22">
+          <div class="max-w-3xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Stack</p>
+            <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
+              WordPress first, with enough surrounding experience to connect the pieces.
+            </h2>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-2">
+            {stack.map((item) => (
+              <span class="rounded-full border border-black/10 bg-[#f6f2ea] px-4 py-2 text-sm font-semibold text-neutral-800">{item}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="bg-[#0b0e15] text-white">
+        <div class="mx-auto grid max-w-7xl gap-10 px-5 py-16 md:px-8 md:py-22 lg:grid-cols-[0.82fr_1.18fr]">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
+              Looking for a senior WordPress/PHP contractor?
+            </h2>
+            <p class="mt-5 text-lg leading-8 text-white/72">
+              Send over the role, project, timeline, and any useful context. For contract applications, LinkedIn is also a good place to connect.
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4">
+              <a href="mailto:tommy@wpindy.com?subject=Contract%20WordPress%20Developer%20Inquiry" class="btn-pill btn-pill--white">tommy@wpindy.com</a>
+              <a
+                href="https://www.linkedin.com/in/tommy-day"
+                class="btn-pill btn-pill--blue"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
 
-          <div class="relative aspect-16/10 overflow-hidden bg-neutral-200">
-            {caseStudies.map((study, index) => (
-              <img
-                src={study.image}
-                alt={study.imageAlt}
-                class={`case-study-image absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
-                  index === 0 ? 'opacity-100' : 'pointer-events-none opacity-0'
-                }`}
-                data-case-image
-                data-case-id={study.id}
-              />
-            ))}
+          <form id="contact-form" class="rounded-3xl border border-white/10 bg-white/[0.055] p-5 shadow-2xl shadow-black/20 md:p-7" method="POST" action="/api/contact">
+            <div class="grid gap-4 md:grid-cols-2">
+              <label class="block">
+                <span class="text-sm font-semibold text-white/80">Name</span>
+                <input class="mt-2 w-full rounded-xl border border-white/12 bg-white/8 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-white/36" id="name" name="name" type="text" required autocomplete="name" />
+              </label>
 
-            <div class="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent"></div>
-          </div>
+              <label class="block">
+                <span class="text-sm font-semibold text-white/80">Email</span>
+                <input class="mt-2 w-full rounded-xl border border-white/12 bg-white/8 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-white/36" id="email" name="email" type="email" required autocomplete="email" />
+              </label>
+            </div>
 
-          <div class="p-6 md:p-8">
-            {caseStudies.map((study, index) => (
-              <div
-                class={`case-study-copy transition-opacity duration-300 ${
-                  index === 0 ? 'block opacity-100' : 'hidden opacity-0'
-                }`}
-                data-case-copy
-                data-case-id={study.id}
-              >
-                <p class="text-sm font-semibold uppercase tracking-[0.16em] text-neutral-500">
-                  {study.eyebrow}
+            <label class="mt-4 block">
+              <span class="text-sm font-semibold text-white/80">Company / Website</span>
+              <input class="mt-2 w-full rounded-xl border border-white/12 bg-white/8 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-white/36" id="company" name="company" type="text" autocomplete="organization" />
+            </label>
+
+            <label class="mt-4 block">
+              <span class="text-sm font-semibold text-white/80">What do you need help with?</span>
+              <select class="mt-2 w-full rounded-xl border border-white/12 bg-[#111827] px-4 py-3 text-white outline-none transition focus:border-white/36" id="projectType" name="projectType">
+                <option value="">Select one</option>
+                <option>Contract WordPress/PHP role</option>
+                <option>Agency subcontracting</option>
+                <option>Custom plugin development</option>
+                <option>API integration / data sync</option>
+                <option>WooCommerce / ecommerce logic</option>
+                <option>Debugging / rescue work</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+
+            <label class="mt-4 block">
+              <span class="text-sm font-semibold text-white/80">Message</span>
+              <textarea class="mt-2 min-h-36 w-full rounded-xl border border-white/12 bg-white/8 px-4 py-3 text-white outline-none transition placeholder:text-white/35 focus:border-white/36" id="message" name="message" rows="6" required></textarea>
+            </label>
+
+            <div class="hidden" aria-hidden="true">
+              <label for="website">Website</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="mt-5">
+              {turnstileSiteKey ? (
+                <div class="cf-turnstile" data-sitekey={turnstileSiteKey}></div>
+              ) : (
+                <p class="rounded-xl border border-amber-300/35 bg-amber-300/10 px-4 py-3 text-sm text-amber-100">
+                  Turnstile needs a site key before this form can send. You can still email directly for now.
                 </p>
+              )}
+            </div>
 
-                <h3 class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
-                  {study.title}
-                </h3>
+            <p id="contact-form-status" class="mt-4 min-h-6 text-sm font-semibold text-white/72" aria-live="polite"></p>
 
-                <p class="mt-4 text-base leading-7 text-neutral-700">
-                  {study.detail}
-                </p>
-
-                <ul class="mt-6 flex flex-wrap gap-2 text-sm text-neutral-600">
-                  {study.tags.map((tag) => (
-                    <li class="rounded-full border border-black/10 px-3 py-1">
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-
-                <div class="mt-8">
-                  <a
-                    href={study.href}
-                    class="inline-flex items-center rounded-full border border-black/10 px-5 py-3 text-sm font-semibold transition hover:-translate-y-px hover:border-black/20"
-                  >
-                    View Case Study
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </article>
-      </div>
-    </div>
-    <div class="mt-10">
-      <EditorialImageSlot label="Future editorial image" variant="wide" />
-    </div>
+            <div class="mt-5 flex flex-wrap items-center gap-4">
+              <button type="submit" class="rounded-full bg-wp-blue px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60">
+                Send message
+              </button>
+              <span class="text-sm text-white/48">Or email tommy@wpindy.com directly.</span>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
   </div>
-</section>
 
-<script>
-  const sections = document.querySelectorAll('[data-case-studies]');
+  <script is:inline>
+    const form = document.querySelector('#contact-form');
+    const status = document.querySelector('#contact-form-status');
 
-  sections.forEach((section) => {
-    const triggers = section.querySelectorAll('[data-case-trigger]');
-    const images = section.querySelectorAll('[data-case-image]');
-    const copies = section.querySelectorAll('[data-case-copy]');
+    form?.addEventListener('submit', async (event) => {
+      event.preventDefault();
 
-    let activeId = section.getAttribute('data-initial-id');
+      const button = form.querySelector('button[type="submit"]');
+      const originalText = button?.textContent || 'Send message';
 
-  const setActive = (id: string) => {
-      if (!id || id === activeId) return;
+      if (button) {
+        button.disabled = true;
+        button.textContent = 'Sending...';
+      }
 
-      triggers.forEach((trigger) => {
-        const isActive = trigger.getAttribute('data-case-id') === id;
-        trigger.classList.toggle('is-active', isActive);
-        trigger.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-      });
+      if (status) {
+        status.textContent = '';
+      }
 
-      images.forEach((image) => {
-        const isActive = image.getAttribute('data-case-id') === id;
-        image.classList.toggle('opacity-100', isActive);
-        image.classList.toggle('opacity-0', !isActive);
-        image.classList.toggle('pointer-events-none', !isActive);
-      });
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+        });
 
-      copies.forEach((copy) => {
-        const isActive = copy.getAttribute('data-case-id') === id;
+        const result = await response.json();
 
-        if (isActive) {
-          copy.classList.remove('hidden');
-          requestAnimationFrame(() => {
-            copy.classList.remove('opacity-0');
-            copy.classList.add('opacity-100');
-          });
-        } else {
-          copy.classList.remove('opacity-100');
-          copy.classList.add('opacity-0');
-
-          setTimeout(() => {
-            if (copy.getAttribute('data-case-id') !== id) {
-              copy.classList.add('hidden');
-            }
-          }, 220);
+        if (result.ok) {
+          form.innerHTML = `
+            <div class="rounded-2xl border border-white/12 bg-white/8 p-6">
+              <h3 class="font-display text-3xl text-white">Message sent.</h3>
+              <p class="mt-3 text-white/72">Thanks. I will get back to you soon.</p>
+            </div>
+          `;
+          return;
         }
-      });
 
-      activeId = id;
-    };
+        throw new Error(result.error || 'Something went wrong.');
+      } catch (error) {
+        if (status) {
+          status.textContent = 'Something went wrong. Please email tommy@wpindy.com directly.';
+        }
 
-    triggers.forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const id = trigger.getAttribute('data-case-id');
-        if (!id) return;
-        setActive(id);
-      });
+        if (button) {
+          button.disabled = false;
+          button.textContent = originalText;
+        }
+
+        if (window.turnstile) {
+          window.turnstile.reset();
+        }
+      }
     });
-  });
-</script>
-
-  </main>
-</Layout>
+  </script>
+</LandingLayout>

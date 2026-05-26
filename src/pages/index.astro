@@ -2,81 +2,135 @@
 import LandingLayout from '../layouts/LandingLayout.astro';
 import StripeDivider from '../components/StripeDivider.astro';
 
-const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '';
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAADWw2L1B96vj2Ki5';
 
-const fitCards = [
+const services = [
   {
-    title: 'Contract WordPress/PHP roles',
-    text: 'Senior implementation support for teams that need someone who can read the codebase, understand the business problem, and start moving without a lot of hand-holding.',
+    title: 'Custom WordPress Plugins',
+    text: 'Purpose-built plugins for business logic, admin tools, reporting, custom workflows, and features that should not live in theme files.',
   },
   {
-    title: 'Custom plugins and backend tools',
-    text: 'Purpose-built functionality, admin screens, reporting tools, data workflows, and WordPress behavior that off-the-shelf plugins cannot quite handle.',
+    title: 'API Integrations & Data Sync',
+    text: 'Connect WordPress with CRMs, ecommerce platforms, search tools, payment systems, inventory data, and other third-party services.',
   },
   {
-    title: 'API integrations and data sync',
-    text: 'Connections between WordPress and external systems, from ecommerce platforms and course tools to proprietary APIs and internal business systems.',
+    title: 'WooCommerce & Ecommerce Logic',
+    text: 'Checkout flows, subscription rules, renewal paths, payment edge cases, custom product logic, and API-connected purchase paths.',
   },
   {
-    title: 'WooCommerce and ecommerce logic',
-    text: 'Checkout flows, subscriptions, product rules, service eligibility, payment-plan logic, Commerce7 work, and other ecommerce edge cases.',
+    title: 'Commerce7 Integrations',
+    text: 'Custom WordPress and Commerce7 work for product data, storefront content, club functionality, event tickets, templates, and customer-facing tools.',
   },
   {
-    title: 'Inherited sites and rescue work',
-    text: 'Debugging, cleanup, refactoring, performance audits, and stabilizing builds that have become fragile or hard for a team to maintain.',
+    title: 'Flexible WordPress Themes',
+    text: 'Custom themes with ACF, blocks, and editing workflows that give clients control without turning the site into a mess.',
   },
   {
-    title: 'Agency overflow and white-label work',
-    text: 'Comfortable working behind the scenes with agency teams, existing project managers, staging workflows, GitHub, and client constraints.',
+    title: 'Debugging, Refactoring & Rescue',
+    text: 'Stabilizing inherited builds, tracking down bugs, cleaning up fragile code, improving performance, and making future work less painful.',
   },
 ];
 
 const projects = [
   {
-    meta: 'Named client / Gutenberg',
-    title: 'Finish Line content platform rebuild',
-    text: 'Rebuilt the official Finish Line blog as a WordPress/Gutenberg project focused on flexible publishing for a large retail content platform.',
-    tags: ['WordPress', 'Gutenberg', 'Theme build'],
+    meta: 'St. Julian Winery / Commerce7',
+    title: 'St. Julian website + custom Commerce7 plugin',
+    text: 'Contracted through Maestro to help build a custom WordPress and Commerce7 integration connecting product data, club functionality, event tickets, storefront templates, and ecommerce content.',
+    tags: ['Commerce7', 'WordPress', 'Custom plugin'],
+    featured: true,
+    websiteUrl: 'https://www.stjulian.com/',
   },
   {
-    meta: 'Commerce7 / WordPress',
-    title: 'St. Julian ecommerce integration',
-    text: 'Built a custom WordPress rebuild and Commerce7 integration connecting product data, club functionality, event tickets, and storefront content.',
-    tags: ['Commerce7', 'ACF', 'API integration'],
+    meta: 'Maestro / Agency website',
+    title: 'Maestro company website',
+    text: 'Worked full-time at Maestro for two years and have continued contracting with them since. I built their company website with custom ACF page-building tools, Greenhouse job application API integration, Vimeo and Hubspot API integrations, and other custom functionality.',
+    tags: ['WordPress', 'API integrations', 'Custom page builder'],
+    websiteUrl: 'https://maestrolearning.com/',
   },
   {
     meta: 'Custom plugin / AI search',
-    title: 'AI search with admin reporting',
-    text: 'Created a WordPress plugin that integrated a proprietary AI search system and added internal reporting and export tools.',
+    title: 'AI search plugin with admin reporting',
+    text: 'Custom WordPress plugin integrating a proprietary AI search system with frontend search behavior, admin reporting, search activity visibility, and exports.',
     tags: ['Custom plugin', 'REST APIs', 'Admin tools'],
+    gallery: [
+      {
+        image: '/work/ai-search1.png',
+        title: 'Frontend search experience',
+        text: 'Show the public-facing search UI and how the AI results were worked into the WordPress site.',
+      },
+      {
+        image: '/work/ai-search2.png',
+        title: 'Admin reporting screen',
+        text: 'Show the custom WordPress admin view that helped the client see search activity and usage patterns.',
+      },
+      {
+        image: '/work/ai-search3.png',
+        title: 'Export workflow',
+        text: 'Show how internal users could export search/reporting data without needing a developer.',
+      },
+      {
+        image: '/work/ai-search4.png',
+        title: 'Additional plugin view',
+        text: 'Add a short note about what this screenshot shows.',
+      },
+    ],
   },
   {
-    meta: 'Agency partner / WooCommerce',
-    title: 'Maestro + Loop course extension',
-    text: 'Built in partnership with Maestro: a reusable WooCommerce extension for importing, selling, and syncing Loop course data.',
+    meta: 'WooCommerce / Checkout logic',
+    title: 'Custom WooCommerce checkout flow',
+    text: 'Custom checkout path guiding users through service selection, add-ons, payment choices, and business-specific purchase logic.',
+    tags: ['WooCommerce', 'PHP', 'JavaScript'],
+  },
+  {
+    meta: 'Maestro / WooCommerce',
+    title: 'WooCommerce + Loop plugin',
+    text: 'Built for Maestro: a reusable WooCommerce extension for importing, selling, and syncing Loop courses and user data.',
     tags: ['WooCommerce', 'Loop', 'Data sync'],
   },
   {
-    meta: 'Service business / API flow',
-    title: 'Custom checkout and scheduling flow',
-    text: 'Built a PHP/JS flow for ZIP lookup, service availability, add-ons, payment plans, customer creation, invoices, and scheduled services through an external API.',
-    tags: ['PHP', 'JavaScript', 'Checkout logic'],
+    meta: 'Finish Line / Gutenberg',
+    title: 'Finish Line blog',
+    text: 'WordPress/Gutenberg build for the official Finish Line blog, focused on flexible publishing for a large retail content platform. Built a custom Gutenberg block that allowed content editors to easily link to products from the Finish Line catalog API.',
+    tags: ['WordPress', 'Gutenberg', 'Theme build'],
+    websiteUrl: 'https://blog.finishline.com/',
+  },
+  {
+    meta: 'VetBloom / Maestro',
+    title: 'VetBloom theme build + WooCommerce course platform',
+    text: 'Contracted through Maestro to build a custom WordPress theme for VetBloom and integrate the WooCommerce + Loop plugin for course sales and synced user data.',
+    tags: ['Theme build', 'WooCommerce', 'Loop plugin'],
+    websiteUrl: 'https://www.vetbloom.com/',
+  },
+  {
+    meta: 'TommyDay.com / Static ecommerce',
+    title: 'Custom Astro + Snipcart ecommerce site',
+    text: 'I am a collage artist in my spare time, and I built a simple static ecommerce site with Astro and Snipcart.  It combines a tailored frontend, lightweight content workflow, and simple ecommerce setup for selling prints and originals.',
+    tags: ['Astro', 'Snipcart', 'Static ecommerce'],
+    websiteUrl: 'https://tommyday.com/',
   },
 ];
 
 const stack = [
   'WordPress',
+  'Custom themes/plugins',
   'PHP',
   'JavaScript',
+  'HTML/CSS',
   'WooCommerce',
   'ACF',
   'Gutenberg',
-  'REST APIs',
-  'Custom plugins',
   'Commerce7',
+  'REST APIs',
+  'Google Tag Manager',
   'Shopify',
+  'Stripe',
+  'Hubspot',
   'Git',
-  'CLI',
+  'Alpine.js',
+  'WPEngine',
+  'Kinsta',
+  'Cloudflare Pages/Workers',
+  'WP-CLI',
   'Astro',
   'Tailwind',
 ];
@@ -87,105 +141,89 @@ const stack = [
   description="Senior contract WordPress and PHP developer for custom plugins, API integrations, WooCommerce, inherited sites, and agency support."
   turnstile={Boolean(turnstileSiteKey)}
 >
-  <div id="top" class="min-h-screen bg-[#0b0e15] text-white">
-    <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0b0e15]/88 backdrop-blur-md">
-      <div class="mx-auto flex max-w-7xl items-center justify-between gap-5 px-5 py-4 md:px-8">
-        <a href="#top" class="group leading-none" aria-label="Back to top">
-          <span class="block font-display text-2xl text-white">WP Indy</span>
-          <span class="mt-1 block text-xs font-semibold uppercase tracking-[0.18em] text-white/48">Tommy Day</span>
+  <div id="top" class="min-h-screen text-white">
+    <header class="site-header fixed inset-x-0 top-0 z-50 pb-5 pt-5 transition duration-300">
+      <div class="shell">
+        <div class="flex items-center justify-between gap-8 py-2">
+        <a href="#top" class="inline-flex shrink-0 items-center" aria-label="Back to top">
+          <img src="/wp_indy2.svg" alt="WP Indy" class="h-10 w-auto md:h-12" />
         </a>
 
-        <nav class="hidden items-center gap-5 text-sm font-semibold text-white/68 md:flex" aria-label="Landing page">
-          <a href="#fit" class="transition hover:text-white">Fit</a>
-          <a href="#work" class="transition hover:text-white">Work</a>
-          <a href="#stack" class="transition hover:text-white">Stack</a>
-          <a href="#contact" class="transition hover:text-white">Contact</a>
+        <nav class="hidden items-center gap-7 text-[15px] md:ml-auto md:flex" aria-label="Landing page">
+          <a href="#services" class="nav-link">Services</a>
+          <a href="#work" class="nav-link">Work</a>
+          <a href="#stack" class="nav-link">Stack</a>
+          <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
         <div class="flex items-center gap-3">
           <a
             href="https://www.linkedin.com/in/tommy-day"
-            class="hidden rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/78 transition hover:border-white/28 hover:text-white sm:inline-flex"
+            class="btn-pill hidden border border-white/16 bg-transparent px-4 py-2 text-sm text-white shadow-none transition hover:border-white/30 hover:bg-white/8 hover:text-white sm:inline-flex"
             target="_blank"
             rel="noreferrer"
           >
             LinkedIn
           </a>
-          <a href="/files/TommyDay_Resume.pdf" class="hidden rounded-full border border-white/12 px-4 py-2 text-sm font-semibold text-white/78 transition hover:border-white/28 hover:text-white sm:inline-flex">
-            Resume
-          </a>
-          <a href="#contact" class="rounded-full bg-wp-blue px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-700">
+          <a href="#contact" class="btn-pill btn-pill--blue px-4 py-2 text-sm">
             Email
           </a>
+        </div>
         </div>
       </div>
     </header>
 
-    <main>
-      <section class="relative overflow-hidden">
-        <div class="absolute inset-0 grid-fade opacity-35"></div>
-        <div class="mx-auto max-w-7xl px-5 py-18 md:px-8 md:py-24 lg:py-28">
-          <div class="relative max-w-5xl">
-            <p class="eyebrow">Senior contract WordPress/PHP developer</p>
-            <h1 class="mt-5 font-display text-[3.15rem] leading-[0.98] text-white sm:text-6xl md:text-7xl lg:text-[5.8rem]">
-              Custom plugins, API integrations, and inherited WordPress systems.
-            </h1>
-            <p class="mt-7 max-w-3xl text-lg leading-8 text-white/74 md:text-xl">
-              I am Tommy Day, an Indianapolis-based developer with 17 years of hands-on WordPress experience across freelance, agency, and product work. I help agencies, recruiters, and teams ship the parts of WordPress projects that need senior judgment.
-            </p>
+    <main class="relative z-0 pt-28">
+      <section class="shell pb-10 md:pt-18 md:pb-28">
+        <div class="max-w-5xl">
+          <div class="mt-6 flex items-start gap-5 md:gap-7">
+            <div>
+              <h1 class="font-display text-[2.8rem] leading-[1.02] tracking-[-0.02em] text-white sm:text-[3.6rem] md:text-[4rem] lg:text-[4.2rem]">
+                Senior WordPress development, <br />
+                API integrations, &amp; custom plugins <br />
+                <span class="hero-kicker-wrap">
+                  <span class="hero-kicker">for agencies and teams.</span>
+                </span>
+              </h1>
 
-            <div class="mt-9 flex flex-wrap items-center gap-4">
-              <a href="#contact" class="btn-pill btn-pill--blue">Talk about a contract role</a>
-              <a
-                href="https://www.linkedin.com/in/tommy-day"
-                class="btn-pill btn-pill--white"
-                target="_blank"
-                rel="noreferrer"
-              >
-                View LinkedIn
-              </a>
-              <a href="/files/TommyDay_Resume.pdf" class="text-base font-semibold text-white/72 underline decoration-white/28 underline-offset-4 transition hover:text-white">
-                Download resume
-              </a>
+              <p class="mt-6 max-w-3xl text-lg leading-8 tracking-[-0.01em] text-white/72">
+                I’m Tommy Day, an Indianapolis-based WordPress/PHP developer with 15+ years of freelance, agency, and product experience. I help teams plan, build, fix, and extend WordPress systems that need more than routine implementation.
+              </p>
             </div>
+          </div>
 
-            <div class="mt-12 grid gap-3 text-sm text-white/70 sm:grid-cols-3">
-              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                <span class="block text-lg font-semibold text-white">17 years</span>
-                WordPress, PHP, ecommerce, and agency production work.
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                <span class="block text-lg font-semibold text-white">Remote-ready</span>
-                Comfortable with GitHub, staging sites, async notes, and embedded teams.
-              </div>
-              <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                <span class="block text-lg font-semibold text-white">Indianapolis</span>
-                Based in Indy, working with agencies and teams anywhere.
-              </div>
-            </div>
+          <div class="mt-8 flex flex-wrap items-center gap-5">
+              <a href="#contact" class="btn-pill btn-pill--white">Start a Project</a>
+              <a href="#work" class="text-base font-medium text-white/75 transition hover:text-white">
+                View Work
+              </a>
+
           </div>
         </div>
       </section>
 
       <StripeDivider />
 
-      <section id="fit" class="bg-[#f6f2ea] text-neutral-950">
-        <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-22">
+      <section id="services" class="bg-[#e7dfd2] text-neutral-900">
+        <div class="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
           <div class="max-w-3xl">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Best fit</p>
-            <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
-              Useful when the work is too custom, too integrated, or too important to hand to a generalist.
+            <p class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-neutral-600">Services</p>
+            <h2 class="font-display text-5xl leading-tight tracking-tight md:text-5xl">
+              Agency experience, contractor flexibility, and years of WordPress problem solving.
             </h2>
-            <p class="mt-5 text-lg leading-8 text-neutral-700">
-              I am not usually the right fit for brand-new Elementor or Divi builds. I am a good fit when an existing site needs debugging, cleanup, integrations, or custom functionality around it.
+            <p class="mt-8 max-w-4xl text-xl leading-9 tracking-[-0.015em] text-neutral-700">
+              I’ve spent 15+ years working with WordPress across freelance, agency, and contract projects. I’m comfortable
+              <strong class="font-semibold text-neutral-900">behind the scenes</strong>,
+              <strong class="font-semibold text-neutral-900">client-facing</strong>,
+              or <strong class="font-semibold text-neutral-900">plugged into an existing team</strong>. Especially when there are custom plugins, integrations, ecommerce logic, flexible editing systems, or inherited builds that need careful senior attention.
             </p>
           </div>
 
-          <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {fitCards.map((card) => (
-              <article class="rounded-2xl border border-black/10 bg-white/62 p-6 shadow-sm">
-                <h3 class="text-lg font-semibold tracking-tight text-neutral-950">{card.title}</h3>
-                <p class="mt-3 leading-7 text-neutral-700">{card.text}</p>
+          <div class="mt-14 grid gap-6 md:grid-cols-2">
+            {services.map((card) => (
+              <article class="rounded-[1.75rem] bg-white/75 p-8 shadow-sm ring-1 ring-black/5">
+                <h3 class="text-xl font-semibold tracking-[-0.02em] text-neutral-950">{card.title}</h3>
+                <p class="mt-4 max-w-xl text-base leading-7 text-neutral-700">{card.text}</p>
               </article>
             ))}
           </div>
@@ -196,26 +234,62 @@ const stack = [
         <div class="mx-auto max-w-7xl px-5 py-16 md:px-8 md:py-22">
           <div class="grid gap-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
             <div class="lg:sticky lg:top-28">
-              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Selected experience</p>
+              <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">Work</p>
               <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
-                A few examples of the kind of work I get brought in for.
+                The kind of work teams bring me in to solve.
               </h2>
               <p class="mt-5 text-lg leading-8 text-neutral-700">
-                Some projects are public, some are agency-partner work, and some have to stay partly anonymized. The through-line is custom WordPress implementation, integration work, and practical problem-solving.
+                A lot of my work happens behind the scenes for agencies, internal teams, and established businesses. These examples cover custom plugins, API integrations, ecommerce workflows, cleanup work, and systems that needed a senior developer to make sense of the moving parts.
               </p>
             </div>
 
             <div class="grid gap-5">
-              {projects.map((project) => (
-                <article class="rounded-2xl border border-black/10 bg-[#f6f2ea] p-6 shadow-sm">
+              {projects.map((project, index) => (
+                <article
+                  class={`rounded-2xl border p-6 shadow-sm ${
+                    project.featured
+                      ? 'border-wp-blue/50 bg-white ring-2 ring-wp-blue/10'
+                      : 'border-black/10 bg-[#f6f2ea]'
+                  }`}
+                >
                   <p class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">{project.meta}</p>
-                  <h3 class="mt-3 text-2xl font-semibold tracking-tight text-neutral-950">{project.title}</h3>
+                  <div class="mt-3 flex flex-wrap items-start justify-between gap-3">
+                    <h3 class="text-2xl font-semibold tracking-tight text-neutral-950">{project.title}</h3>
+                    {project.featured && (
+                      <span class="rounded-full bg-wp-blue px-3 py-1 text-xs font-bold uppercase tracking-[0.12em] text-white">
+                        Featured
+                      </span>
+                    )}
+                  </div>
                   <p class="mt-3 leading-7 text-neutral-700">{project.text}</p>
                   <ul class="mt-5 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <li class="rounded-full border border-black/10 bg-white/70 px-3 py-1 text-sm font-medium text-neutral-700">{tag}</li>
                     ))}
                   </ul>
+                  {(project.websiteUrl || project.gallery) && (
+                    <div class="mt-6 flex flex-wrap gap-3">
+                      {project.websiteUrl && (
+                        <a
+                          href={project.websiteUrl}
+                          class="rounded-full bg-wp-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          View website
+                        </a>
+                      )}
+                      {project.gallery && (
+                        <button
+                          type="button"
+                          class="rounded-full bg-wp-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+                          data-modal-open={`work-modal-${index}`}
+                        >
+                          View gallery
+                        </button>
+                      )}
+                    </div>
+                  )}
                 </article>
               ))}
             </div>
@@ -231,19 +305,15 @@ const stack = [
             <div>
               <p class="text-sm font-semibold uppercase tracking-[0.18em] text-neutral-500">How I work</p>
               <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
-                Calm senior support for teams that already have momentum.
+                Senior support that fits into your existing workflow.
               </h2>
             </div>
-            <div class="space-y-5 text-lg leading-8 text-neutral-700">
-              <p>
-                I freelanced for almost 10 years, with a lot of that work happening as contract support for agencies. I speak that language, and I have also worked full-time inside agency teams.
-              </p>
-              <p>
-                A lot of integration work starts with a platform I have not seen before. The value is knowing how to read the docs, understand the data model, and make it fit WordPress cleanly.
-              </p>
-              <p>
-                I can work independently, embed with an existing team, document decisions, and communicate clearly when a project needs a practical technical path forward.
-              </p>
+           <div class="max-w-2xl space-y-6 text-lg leading-8 tracking-[-0.01em] text-neutral-700">
+              <p>I can work independently, collaborate with an internal team, or support an agency behind the scenes. I’m comfortable white-labeling my work, joining client-facing calls when needed, documenting decisions, and keeping communication clear.</p>
+
+              <p>I’m used to projects with real budgets, real timelines, and real stakeholders. Whether the work is a new build or plugin, an integration, or cleanup on an existing site, I try to keep the process steady and practical.</p>
+
+              <p>I’m based in Indianapolis and work normal Eastern Time business hours. I’m available for Zoom calls, async project communication, and occasional Indianapolis-area in-person meetings when it makes sense.</p>
             </div>
           </div>
         </div>
@@ -256,6 +326,9 @@ const stack = [
             <h2 class="mt-4 font-display text-4xl leading-tight md:text-5xl">
               WordPress first, with enough surrounding experience to connect the pieces.
             </h2>
+            <p class="mt-6 max-w-3xl text-lg leading-8 tracking-[-0.01em] text-neutral-700">
+              Most of my work starts in WordPress, but the real problems often involve the systems around it: APIs, ecommerce platforms, hosting, deployment, admin workflows, third-party tools, and the data moving between them.
+            </p>
           </div>
           <div class="mt-8 flex flex-wrap gap-2">
             {stack.map((item) => (
@@ -273,10 +346,10 @@ const stack = [
               Looking for a senior WordPress/PHP contractor?
             </h2>
             <p class="mt-5 text-lg leading-8 text-white/72">
-              Send over the role, project, timeline, and any useful context. For contract applications, LinkedIn is also a good place to connect.
+              Send over the project, timeline, and any useful context. For contract roles, agency support, or Indianapolis-area work, LinkedIn is also a good place to connect.
             </p>
             <div class="mt-8 flex flex-wrap gap-4">
-              <a href="mailto:tommy@wpindy.com?subject=Contract%20WordPress%20Developer%20Inquiry" class="btn-pill btn-pill--white">tommy@wpindy.com</a>
+              <a href="mailto:hey@wpindy.com?subject=Contract%20WordPress%20Developer%20Inquiry" class="btn-pill btn-pill--white">hey@wpindy.com</a>
               <a
                 href="https://www.linkedin.com/in/tommy-day"
                 class="btn-pill btn-pill--blue"
@@ -310,15 +383,30 @@ const stack = [
               <span class="text-sm font-semibold text-white/80">What do you need help with?</span>
               <select class="mt-2 w-full rounded-xl border border-white/12 bg-[#111827] px-4 py-3 text-white outline-none transition focus:border-white/36" id="projectType" name="projectType">
                 <option value="">Select one</option>
-                <option>Contract WordPress/PHP role</option>
+                <option>Custom WordPress plugin</option>
+                <option>API integration</option>
+                <option>WooCommerce / ecommerce</option>
+                <option>Commerce7 / wine ecommerce</option>
+                <option>Theme build / ACF editing system</option>
+                <option>Debugging / cleanup / inherited site</option>
                 <option>Agency subcontracting</option>
-                <option>Custom plugin development</option>
-                <option>API integration / data sync</option>
-                <option>WooCommerce / ecommerce logic</option>
-                <option>Debugging / rescue work</option>
+                <option>Contract role</option>
                 <option>Not sure yet</option>
               </select>
             </label>
+
+            <label class="block">
+                <span class="text-sm font-semibold text-white/80">Timeline</span>
+
+                <select class="mt-2 w-full rounded-xl border border-white/12 bg-[#111827] px-4 py-3 text-white outline-none transition focus:border-white/36" id="timeline" name="timeline">
+                <option value="">Select one</option>
+                <option>ASAP</option>
+                <option>This month</option>
+                <option>1–2 months</option>
+                <option>Flexible / planning ahead</option>
+                <option>Not sure yet</option>
+              </select>
+              </label>
 
             <label class="mt-4 block">
               <span class="text-sm font-semibold text-white/80">Message</span>
@@ -346,15 +434,195 @@ const stack = [
               <button type="submit" class="rounded-full bg-wp-blue px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/30 transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60">
                 Send message
               </button>
-              <span class="text-sm text-white/48">Or email tommy@wpindy.com directly.</span>
+              <span class="text-sm text-white/48">Or email hey@wpindy.com directly.</span>
             </div>
           </form>
         </div>
       </section>
+
+      {projects.map((project, index) => project.gallery && (
+        <dialog
+          id={`work-modal-${index}`}
+          class="m-auto w-[min(92vw,980px)] rounded-3xl border border-black/10 bg-[#f6f2ea] p-0 text-neutral-950 opacity-0 shadow-2xl scale-[0.985] transition-all duration-200 ease-out backdrop:bg-black/70 backdrop:opacity-0 backdrop:transition-opacity backdrop:duration-200 open:opacity-100 open:scale-100 open:backdrop:opacity-100"
+          data-work-modal
+        >
+          <div class="flex items-start justify-between gap-6 border-b border-black/10 px-5 py-5 md:px-7">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-[0.16em] text-neutral-500">{project.meta}</p>
+              <h3 class="mt-2 font-display text-3xl leading-tight md:text-4xl">{project.title}</h3>
+            </div>
+            <button
+              type="button"
+              class="rounded-full border border-black/15 bg-white/70 px-3 py-1.5 text-sm font-semibold text-neutral-700 transition hover:bg-white hover:text-neutral-950"
+              data-modal-close
+            >
+              Close
+            </button>
+          </div>
+
+          <div class="px-5 py-6 md:px-7 md:py-7">
+            <div class="relative overflow-hidden rounded-2xl">
+              {project.gallery.map((item, itemIndex) => (
+                <article
+                  class={`rounded-2xl border border-black/10 bg-white/65 p-4 transition-all duration-300 ease-out ${
+                    itemIndex === 0
+                      ? 'relative opacity-100 translate-y-0'
+                      : 'pointer-events-none absolute inset-0 opacity-0 translate-y-2'
+                  }`}
+                  data-modal-slide
+                  data-slide-index={itemIndex}
+                >
+                  <div class="grid gap-4 md:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)] md:items-center">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        class="aspect-video w-full rounded-xl border border-black/10 object-cover"
+                      />
+                    ) : (
+                      <div class="flex aspect-video w-full items-center justify-center rounded-xl border border-dashed border-black/20 bg-[#e7dfd2] text-center text-sm font-semibold uppercase tracking-[0.14em] text-neutral-500">
+                        Screenshot {itemIndex + 1}
+                      </div>
+                    )}
+                    <div>
+                      <p class="text-sm font-semibold uppercase tracking-[0.16em] text-neutral-500">
+                        {itemIndex + 1} / {project.gallery.length}
+                      </p>
+                      <h4 class="mt-2 text-xl font-semibold tracking-tight">{item.title}</h4>
+                      <p class="mt-2 leading-7 text-neutral-700">{item.text}</p>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div class="mt-5 flex flex-wrap items-center justify-between gap-4">
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  class="rounded-full border border-black/15 bg-white/70 px-4 py-2 text-sm font-semibold text-neutral-800 transition hover:bg-white"
+                  data-carousel-prev
+                >
+                  Previous
+                </button>
+                <button
+                  type="button"
+                  class="rounded-full bg-wp-blue px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-700"
+                  data-carousel-next
+                >
+                  Next
+                </button>
+              </div>
+
+              <div class="flex items-center gap-2" aria-label="Gallery slides">
+                {project.gallery.map((_, dotIndex) => (
+                  <button
+                    type="button"
+                    class={`h-2.5 w-2.5 rounded-full transition ${dotIndex === 0 ? 'bg-wp-blue' : 'bg-black/20 hover:bg-black/35'}`}
+                    aria-label={`Show slide ${dotIndex + 1}`}
+                    data-carousel-dot
+                    data-slide-index={dotIndex}
+                  ></button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </dialog>
+      ))}
     </main>
   </div>
 
   <script is:inline>
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      if (!header) return;
+      if (window.scrollY > 24) {
+        header.classList.add('is-scrolled');
+      } else {
+        header.classList.remove('is-scrolled');
+      }
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+
+    document.querySelectorAll('[data-modal-open]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal-open');
+        const modal = modalId ? document.getElementById(modalId) : null;
+        if (modal && typeof modal.showModal === 'function') {
+          modal.showModal();
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-work-modal]').forEach((modal) => {
+      let activeSlide = 0;
+      const slides = Array.from(modal.querySelectorAll('[data-modal-slide]'));
+      const dots = Array.from(modal.querySelectorAll('[data-carousel-dot]'));
+
+      const showSlide = (nextSlide) => {
+        if (!slides.length) return;
+        activeSlide = (nextSlide + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+          const isActive = index === activeSlide;
+          slide.classList.toggle('relative', isActive);
+          slide.classList.toggle('absolute', !isActive);
+          slide.classList.toggle('inset-0', !isActive);
+          slide.classList.toggle('pointer-events-none', !isActive);
+          slide.classList.toggle('opacity-100', isActive);
+          slide.classList.toggle('opacity-0', !isActive);
+          slide.classList.toggle('translate-y-0', isActive);
+          slide.classList.toggle('translate-y-2', !isActive);
+          slide.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('bg-wp-blue', index === activeSlide);
+          dot.classList.toggle('bg-black/20', index !== activeSlide);
+          dot.classList.toggle('hover:bg-black/35', index !== activeSlide);
+          dot.setAttribute('aria-current', index === activeSlide ? 'true' : 'false');
+        });
+      };
+
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+          modal.close();
+        }
+      });
+
+      modal.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+          showSlide(activeSlide - 1);
+        }
+
+        if (event.key === 'ArrowRight') {
+          showSlide(activeSlide + 1);
+        }
+      });
+
+      modal.querySelector('[data-carousel-prev]')?.addEventListener('click', () => {
+        showSlide(activeSlide - 1);
+      });
+
+      modal.querySelector('[data-carousel-next]')?.addEventListener('click', () => {
+        showSlide(activeSlide + 1);
+      });
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          showSlide(Number(dot.getAttribute('data-slide-index')) || 0);
+        });
+      });
+
+      modal.querySelectorAll('[data-modal-close]').forEach((button) => {
+        button.addEventListener('click', () => modal.close());
+      });
+
+      showSlide(0);
+    });
+
     const form = document.querySelector('#contact-form');
     const status = document.querySelector('#contact-form-status');
 
@@ -394,7 +662,7 @@ const stack = [
         throw new Error(result.error || 'Something went wrong.');
       } catch (error) {
         if (status) {
-          status.textContent = 'Something went wrong. Please email tommy@wpindy.com directly.';
+          status.textContent = 'Something went wrong. Please email hey@wpindy.com directly.';
         }
 
         if (button) {

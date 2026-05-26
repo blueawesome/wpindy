@@ -8,6 +8,8 @@ interface Env {
   CONTACT_FROM_EMAIL?: string;
 }
 
+const MAX_FORM_BYTES = 64 * 1024;
+
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
@@ -28,13 +30,20 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   }
 
   try {
+    const contentLength = Number(request.headers.get('content-length') || 0);
+
+    if (contentLength > MAX_FORM_BYTES) {
+      return json({ ok: false, error: 'Submission is too large.' }, 413);
+    }
+
     const formData = await request.formData();
 
-    const name = clean(formData.get('name'));
-    const email = clean(formData.get('email'));
-    const company = clean(formData.get('company'));
-    const projectType = clean(formData.get('projectType'));
-    const message = clean(formData.get('message'));
+    const name = clean(formData.get('name'), 120);
+    const email = clean(formData.get('email'), 200);
+    const company = clean(formData.get('company'), 240);
+    const projectType = clean(formData.get('projectType'), 160);
+    const timeline = clean(formData.get('timeline'), 160);
+    const message = clean(formData.get('message'), 5000);
     const honeypot = clean(formData.get('website'));
     const turnstileToken = clean(formData.get('cf-turnstile-response'));
 
@@ -74,6 +83,7 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
       `Email: ${email}`,
       company ? `Company / Website: ${company}` : null,
       projectType ? `Project Type: ${projectType}` : null,
+      timeline ? `Timeline: ${timeline}` : null,
       '',
       'Message:',
       message,
@@ -106,8 +116,8 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
   }
 }
 
-function clean(value: FormDataEntryValue | null): string {
-  return String(value || '').trim();
+function clean(value: FormDataEntryValue | null, maxLength = 1000): string {
+  return String(value || '').trim().slice(0, maxLength);
 }
 
 function json(data: unknown, status = 200, headers: HeadersInit = {}): Response {

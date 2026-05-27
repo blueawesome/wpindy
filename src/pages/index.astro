@@ -114,7 +114,8 @@ const projects = [
     title: 'Custom Astro + Snipcart ecommerce site',
     text: 'I am a collage artist in my spare time, and I built a simple static ecommerce site with Astro and Snipcart.  It combines a tailored frontend, lightweight content workflow, and simple ecommerce setup for selling prints and originals.',
     tags: ['Astro', 'Snipcart', 'Static ecommerce'],
-    websiteUrl: 'https://tommyday.com/',
+    websiteUrl: '#',
+    websiteLabel: 'Launching Soon',
   },
 ];
 
@@ -283,7 +284,7 @@ const stack = [
                           target="_blank"
                           rel="noreferrer"
                         >
-                          View website
+                          {project.websiteLabel || 'View website'}
                         </a>
                       )}
                       {project.gallery && (
